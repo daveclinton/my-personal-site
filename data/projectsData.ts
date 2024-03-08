@@ -23,6 +23,18 @@ const projectsData = [
     imgSrc: '/static/images/community.png',
     href: 'https://www.spaceyatech.com/',
   },
+  {
+    title: 'Deep Learning / AI Models',
+    description: `Played a key role in developing and documenting deep learning projects, providing valuable technical expertise and producing concise and accessible documentation for developers and researchers.`,
+    imgSrc: '/static/images/paperspace.png',
+    href: 'https://blog.paperspace.com/author/david-clinton/',
+  },
+  {
+    title: 'Explore Github',
+    description: `Explore my Github to view all of my proects and contributions`,
+    imgSrc: '/static/images/github.png',
+    href: 'https://github.com/daveclinton',
+  },
 ]
 
 export default projectsData
