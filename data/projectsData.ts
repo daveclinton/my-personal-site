@@ -9,7 +9,7 @@ const projectsData = [
     title: 'Moment Balance',
     description: `My role as a Shopify Developer was to craft an online store that not only sells balance boards but also embodies the spirit of fitness and well-being.`,
     imgSrc: '/static/images/moment.jpg',
-    href: 'https://fuelnu.com/',
+    href: 'https://momentbalanceboards.com/',
   },
   {
     title: 'Topline Admin Dashboard',
