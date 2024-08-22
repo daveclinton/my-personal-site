@@ -19,9 +19,9 @@ export default function Home({ posts }) {
             All things here are Software Engineering related! You can subscribe to receive an
             article straight into your inbox every Sunday! on my
             <Link href="https://daveclintonn.substack.com/" className="text-primary-500">
-              {` Substack `}
+              {` Substack. `}
             </Link>
-            and{' '}
+            You can also check out my
             <Link href="/projects" className="text-primary-500">
               {` Projects `}
             </Link>{' '}
@@ -51,9 +51,7 @@ export default function Home({ posts }) {
             curious about and would love to read about on my blog. 🪜 You know about good resources
             that could benefit fellow aspiring Software Engineers. 😁 You just want to say hello. :)
             <br />
-            <br />
-            I will always be happy to share more with you. Check out my about here; :)
-            <br />
+            <br />I will always be happy to share more with you. Check out my about here; :)
             <Link href="/about" className="text-primary-500">
               {` About `}
             </Link>
