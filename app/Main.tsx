@@ -21,6 +21,11 @@ export default function Home({ posts }) {
             <Link href="https://daveclintonn.substack.com/" className="text-primary-500">
               {` Substack `}
             </Link>
+            and{' '}
+            <Link href="/projects" className="text-primary-500">
+              {` Projects `}
+            </Link>{' '}
+            Here
             <br />
             <br />
             A little about myself: My name is David Clinton, and I am a Software Engineer with a
