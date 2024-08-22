@@ -1,15 +1,9 @@
 const projectsData = [
-  {
-    title: 'Fuelnu Shop',
-    description: `Introducing 'FuelNU', a standout project in my Shopify Developer portfolio, where a Figma design was transformed into a fully functional Shopify website, specializing in premium coffee.`,
-    imgSrc: '/static/images/unel.jpg',
-    href: 'https://fuelnu.com/',
-  },
-  {
-    title: 'Moment Balance',
-    description: `My role as a Shopify Developer was to craft an online store that not only sells balance boards but also embodies the spirit of fitness and well-being.`,
-    imgSrc: '/static/images/moment.jpg',
-    href: 'https://momentbalanceboards.com/',
+   {
+    title: 'Typournament',
+    description: `Developed "Typournament," a full-stack web application for comprehensive tournament management. The platform enables users to create, manage, and participate in tournaments across various domains.`,
+    imgSrc: '/static/images/topline.png',
+    href: 'https://github.com/daveclinton/type-festival',
   },
   {
     title: 'Topline Admin Dashboard',

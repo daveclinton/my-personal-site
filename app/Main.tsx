@@ -16,9 +16,9 @@ export default function Home({ posts }) {
             Hey there, I'm David Clinton
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            Welcome to my digital garden where I write about many things, including, but not limited
-            to React, Typescript, Javascript, Chakra UI, many more software engineering topics. You can learn
-            more about my professional experience in my
+          Hey Legend 😊, All things here are Software Engineering related! You can subscribe to receive an article straight into your inbox every Sunday!A little about myself: My name is David Clinton, and I am a Software Engineer with a strong Mathematics background.I studied B.S in Education Science and took a major in Mathematics from Kenyatta University, where I began learning how to write code in my junior year.My first role was majorly writing technical articles on Machine learning and Deep Learning projects at Paperspace ( was recently acquired by Digital Ocean) . Later,  I transitioned to being a Frontend and Mobile Engineer and worked full time at Untapped-Global. If you are starting out in programming or already one, or looking to advance from junior to senior, this newsletter is tailored just for you.Besides updates on programming, I’ll be sharing insights on how to land your first programming role, get a dream job (I am also looking for mine), transition into tech, master communication skills, and much more.My posts are a collaborative space, so feel free to reply if: 🧰 There’s a topic you’re curious about and would love to read about on my blog.
+
+          🪜 You know about good resources that could benefit fellow aspiring Software Engineers.😁 You just want to say hello. :)I will always be happy to share more with you. Check out my about here; :)
             <Link href="/about" className="text-primary-500">
               {` About `}
             </Link>
