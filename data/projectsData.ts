@@ -31,7 +31,7 @@ const projectsData = [
   },
   {
     title: 'Explore Github',
-    description: `Explore my Github to view all of my proects and contributions`,
+    description: `Explore my Github to view all of my projects and contributions`,
     imgSrc: '/static/images/github.png',
     href: 'https://github.com/daveclinton',
   },
