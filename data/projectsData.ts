@@ -1,8 +1,8 @@
 const projectsData = [
-   {
+  {
     title: 'Typournament',
     description: `Developed "Typournament," a full-stack web application for comprehensive tournament management. The platform enables users to create, manage, and participate in tournaments across various domains.`,
-    imgSrc: '/static/images/topline.png',
+    imgSrc: '/static/images/typo.png',
     href: 'https://github.com/daveclinton/type-festival',
   },
   {
@@ -10,6 +10,12 @@ const projectsData = [
     description: `Fully functional Admin dashboad for insurance invetory`,
     imgSrc: '/static/images/topline.png',
     href: 'https://topline-ui-fork.vercel.app/',
+  },
+  {
+    title: 'Snaplist',
+    description: `Developed "Snaplist," a mobile application using React Native and Expo, designed to streamline product listing on marketplaces like eBay and Facebook Marketplace. The app leverages device camera capabilities for product scanning, integrates with the Serpi API for image-based product search, and facilitates easy listing creation. Built with a modern tech stack including React Query for efficient data fetching, Zod for robust form validation, and NativeWind for styling. The project showcases proficiency in mobile app development, third-party API integration, and creating intuitive user interfaces for e-commerce applications.`,
+    imgSrc: '/static/images/snaplist.png',
+    href: 'https://github.com/daveclinton/mobile-snaplist',
   },
   {
     title: 'Space Ya Tech Community Admin Dashboard',

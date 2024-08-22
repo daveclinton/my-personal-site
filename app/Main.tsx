@@ -13,19 +13,49 @@ export default function Home({ posts }) {
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Hey there, I'm David Clinton
+            Hey Legend 😊, I'm David Clinton
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-          Hey Legend 😊, All things here are Software Engineering related! You can subscribe to receive an article straight into your inbox every Sunday!A little about myself: My name is David Clinton, and I am a Software Engineer with a strong Mathematics background.I studied B.S in Education Science and took a major in Mathematics from Kenyatta University, where I began learning how to write code in my junior year.My first role was majorly writing technical articles on Machine learning and Deep Learning projects at Paperspace ( was recently acquired by Digital Ocean) . Later,  I transitioned to being a Frontend and Mobile Engineer and worked full time at Untapped-Global. If you are starting out in programming or already one, or looking to advance from junior to senior, this newsletter is tailored just for you.Besides updates on programming, I’ll be sharing insights on how to land your first programming role, get a dream job (I am also looking for mine), transition into tech, master communication skills, and much more.My posts are a collaborative space, so feel free to reply if: 🧰 There’s a topic you’re curious about and would love to read about on my blog.
-
-          🪜 You know about good resources that could benefit fellow aspiring Software Engineers.😁 You just want to say hello. :)I will always be happy to share more with you. Check out my about here; :)
+            All things here are Software Engineering related! You can subscribe to receive an
+            article straight into your inbox every Sunday! on my
+            <Link href="https://daveclintonn.substack.com/" className="text-primary-500">
+              {` Substack `}
+            </Link>
+            <br />
+            <br />
+            A little about myself: My name is David Clinton, and I am a Software Engineer with a
+            strong Mathematics background. I studied B.S in Education Science and took a major in
+            Mathematics from Kenyatta University, where I began learning how to write code in my
+            junior year.
+            <br />
+            <br />
+            My first role was majorly writing technical articles on Machine Learning and Deep
+            Learning projects at Paperspace (was recently acquired by Digital Ocean). Later, I
+            transitioned to being a Frontend and Mobile Engineer and worked full-time at
+            Untapped-Global.
+            <br />
+            <br />
+            If you are starting out in programming or already one, or looking to advance from junior
+            to senior, this newsletter is tailored just for you. Besides updates on programming,
+            I’ll be sharing insights on how to land your first programming role, get a dream job (I
+            am also looking for mine), transition into tech, master communication skills, and much
+            more.
+            <br />
+            <br />
+            My posts are a collaborative space, so feel free to reply if: 🧰 There’s a topic you’re
+            curious about and would love to read about on my blog. 🪜 You know about good resources
+            that could benefit fellow aspiring Software Engineers. 😁 You just want to say hello. :)
+            <br />
+            <br />
+            I will always be happy to share more with you. Check out my about here; :)
+            <br />
             <Link href="/about" className="text-primary-500">
               {` About `}
             </Link>
-            section
+            section.
           </p>
         </div>
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+        {/* <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, tags } = post
@@ -75,7 +105,7 @@ export default function Home({ posts }) {
               </li>
             )
           })}
-        </ul>
+        </ul> */}
       </div>
       {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
