@@ -7522,6 +7522,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-react@npm:^0.446.0":
+  version: 0.446.0
+  resolution: "lucide-react@npm:0.446.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+  checksum: 5cd918355c1fbed8b2bb8152aa9eb1e7827be9ecb4560ef078fb8fc7bdd639ac41e96695ec2cd229e713190f43e82da6e92805162a9617a9bad76d5ff7cc2abe
+  languageName: node
+  linkType: hard
+
+"lucide@npm:^0.446.0":
+  version: 0.446.0
+  resolution: "lucide@npm:0.446.0"
+  checksum: 0dc999d8b89c873192a3b3ac32893767eca9b0e3914b5fe4763430b6474fcbaf303be0013b8096a06280e58b7c80b5bace4bac4145740316cce7f887159847c9
+  languageName: node
+  linkType: hard
+
 "make-fetch-happen@npm:^13.0.0":
   version: 13.0.0
   resolution: "make-fetch-happen@npm:13.0.0"
@@ -10962,6 +10978,8 @@ __metadata:
     husky: ^8.0.0
     image-size: 1.0.0
     lint-staged: ^13.0.0
+    lucide: ^0.446.0
+    lucide-react: ^0.446.0
     next: 14.0.3
     next-contentlayer: 0.3.4
     next-themes: ^0.2.1
