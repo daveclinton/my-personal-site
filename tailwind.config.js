@@ -1,3 +1,5 @@
+// tailwind.config.js
+
 // @ts-check
 const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
@@ -5,7 +7,6 @@ const colors = require('tailwindcss/colors')
 /** @type {import("tailwindcss/types").Config } */
 module.exports = {
   content: [
-    './node_modules/pliny/**/*.js',
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,tsx}',
     './components/**/*.{js,ts,tsx}',
@@ -65,6 +66,16 @@ module.exports = {
           },
         },
       }),
+      // **Add Custom Keyframes and Animations Here**
+      keyframes: {
+        'border-beam': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+      },
+      animation: {
+        'border-beam': 'border-beam var(--duration)s linear var(--delay)s infinite',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
