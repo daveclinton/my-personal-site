@@ -31,5 +31,7 @@ module.exports = () => {
 
       return config
     },
+    compress: true,
+    output: 'standalone',
   })
 }
