@@ -1,9 +1,8 @@
-import siteMetadata from '@/data/siteMetadata'
-import headerNavLinks from '@/data/headerNavLinks'
-import Link from './Link'
-import MobileNav from './MobileNav'
-import ThemeSwitch from './ThemeSwitch'
-import SearchButton from './SearchButton'
+import Link from "./Link";
+import MobileNav from "./MobileNav";
+import headerNavLinks from "@/data/headerNavLinks";
+
+import { siteMetadata } from "@/data/siteMetadata";
 
 const Header = () => {
   return (
@@ -11,7 +10,7 @@ const Header = () => {
       <div>
         <Link href="/" aria-label={siteMetadata.headerTitle}>
           <div className="flex items-center justify-between">
-            {typeof siteMetadata.headerTitle === 'string' ? (
+            {typeof siteMetadata.headerTitle === "string" ? (
               <div className=" h-6 text-2xl font-semibold">大卫</div>
             ) : (
               siteMetadata.headerTitle
@@ -21,7 +20,7 @@ const Header = () => {
       </div>
       <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
         {headerNavLinks
-          .filter((link) => link.href !== '/')
+          .filter((link) => link.href !== "/")
           .map((link) => (
             <Link
               key={link.title}
@@ -31,12 +30,10 @@ const Header = () => {
               {link.title}
             </Link>
           ))}
-        <SearchButton />
-        <ThemeSwitch />
         <MobileNav />
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
