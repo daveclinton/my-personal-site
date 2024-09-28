@@ -1,7 +1,7 @@
 import Link from "./Link";
 import MobileNav from "./MobileNav";
 import headerNavLinks from "@/data/headerNavLinks";
-import SearchButton from "./SearchButton";
+
 import { siteMetadata } from "@/data/siteMetadata";
 
 const Header = () => {
@@ -30,7 +30,6 @@ const Header = () => {
               {link.title}
             </Link>
           ))}
-        <SearchButton />
         <MobileNav />
       </div>
     </header>
