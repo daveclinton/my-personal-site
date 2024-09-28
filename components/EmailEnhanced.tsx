@@ -18,7 +18,7 @@ const EnhancedEmailSection = () => {
         Looking to hire me? Email me @ {email}{" "}
         <button
           onClick={copyEmail}
-          className="rounded p-1 text-primary-500 transition-colors duration-200 hover:text-primary-400 focus:outline-none "
+          className="rounded p-1 text-pink-500 transition-colors duration-200 hover:text-pink-400 focus:outline-none "
           aria-label="Copy email address"
         >
           {isCopied ? (

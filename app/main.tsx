@@ -1,10 +1,10 @@
-import Image from "@/components/Image";
 import Link from "@/components/Link";
 import { Rss, Github } from "lucide-react";
 import SocialIcon from "@/components/social-icons";
 import CustomLink from "@/components/Link";
 import EnhancedEmailSection from "@/components/EmailEnhanced";
 import { siteMetadata } from "@/data/siteMetadata";
+import Image from "@/components/Image";
 
 export const Home = () => {
   return (
@@ -16,8 +16,8 @@ export const Home = () => {
               <div className="relative">
                 <div className="absolute inset-0 animate-ping rounded-full bg-red-400 opacity-75"></div>
                 <Image
-                  src="/static/images/davecl.jpg"
-                  alt="Profile"
+                  src="/images/davecl.jpg"
+                  alt="Profile Image"
                   className="relative h-16 w-16 rounded-full"
                   width={50}
                   height={50}
@@ -34,7 +34,7 @@ export const Home = () => {
                 Need consulting? Book a call with me{" "}
                 <CustomLink
                   href="https://cal.com/david-clinton-ucuv7n"
-                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                  className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
                 >
                   here
                 </CustomLink>
@@ -66,12 +66,12 @@ export const Home = () => {
             to receive an article straight into your inbox every Sunday! on my
             <Link
               href="https://daveclintonn.substack.com/"
-              className="text-primary-500"
+              className="text-pink-500"
             >
               {` Substack. `}
             </Link>
             You can also check out my
-            <Link href="/projects" className="text-primary-500">
+            <Link href="/projects" className="text-pink-500">
               {` Projects `}
             </Link>{" "}
             Here
@@ -84,7 +84,7 @@ export const Home = () => {
             <br />
             <br />I will always be happy to share more with you. Check out my
             about here; :)
-            <Link href="/about" className="text-primary-500">
+            <Link href="/about" className="text-pink-500">
               {` About `}
             </Link>
             section.
