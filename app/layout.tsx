@@ -18,12 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-gray-900 from-gray-700 via-gray-900 to-black text-black antialiased dark:bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] dark:text-white">
         <SectionContainer>
-          <div className="flex h-screen flex-col justify-between font-sans">
-            <Header />
-            <main className="mb-auto">{children}</main>
-
-            <Footer />
-          </div>
+          <Header />
+          <main className="mb-auto">{children}</main>
+          <Footer />
         </SectionContainer>
       </body>
     </html>
