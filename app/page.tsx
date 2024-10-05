@@ -1,5 +1,5 @@
 import Link from "@/components/Link";
-import { Rss, Github } from "lucide-react";
+import { Rss, Github, ExternalLink } from "lucide-react";
 import SocialIcon from "@/components/social-icons";
 import CustomLink from "@/components/Link";
 import EnhancedEmailSection from "@/components/EmailEnhanced";
@@ -9,25 +9,32 @@ import { allProjects, Project } from "contentlayer/generated";
 
 function PostCard(project: Project) {
   return (
-    <div className="w-full  overflow-hidden">
+    <div className="w-full overflow-hidden">
       <div className="p-2">
         <div className="flex justify-between items-start">
           <Link
             href={project.link}
-            className="text-xl font-bold text-gray-900 dark:text-white"
+            className="group flex items-center text-xl font-bold text-pink-400  hover:text-pink-900 dark:hover:text-pink-400 transition-colors"
           >
             {project.title}
+            <ExternalLink className="ml-1 h-4 w-4 group-hover:opacity-100 transition-opacity" />
           </Link>
         </div>
+
         <p className="text-gray-600 dark:text-gray-300 mb-2">
           {project.description}
         </p>
+
         <p className="text-gray-600 dark:text-gray-300 font-bold">
-          Technolgies
+          Technologies
         </p>
+
         <div className="flex flex-wrap gap-1">
           {project.technologies.map((tech, index) => (
-            <span key={index} className="py-1 text-sm">
+            <span
+              key={index}
+              className="py-1 text-sm text-gray-600 dark:text-gray-300"
+            >
               *{tech}*
             </span>
           ))}
