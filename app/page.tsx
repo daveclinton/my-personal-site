@@ -5,8 +5,37 @@ import CustomLink from "@/components/Link";
 import EnhancedEmailSection from "@/components/EmailEnhanced";
 import { siteMetadata } from "@/data/siteMetadata";
 import Image from "@/components/Image";
+import { getMDXComponent } from "next-contentlayer/hooks";
+import { compareDesc, format, parseISO } from "date-fns";
+import { allProjects, Project } from "contentlayer/generated";
+
+function PostCard(post: Project) {
+  const Content = getMDXComponent(post.body.code);
+  return (
+    <div className="mb-8">
+      <h2 className="text-xl">
+        <Link
+          href={post.url}
+          className="text-blue-700 hover:text-blue-900"
+          legacyBehavior
+        >
+          {post.title}
+        </Link>
+      </h2>
+      <time dateTime={post.date} className="block mb-2 text-xs text-gray-600">
+        {format(parseISO(post.date), "LLLL d, yyyy")}
+      </time>
+      <div className="text-sm">
+        <Content />
+      </div>
+    </div>
+  );
+}
 
 export default async function Page() {
+  const posts = allProjects.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
   return (
     <>
       <div>
@@ -89,6 +118,12 @@ export default async function Page() {
             </Link>
             section.
           </p>
+        </div>
+        {/* My Posts */}
+        <div>
+          {posts.map((post, idx) => (
+            <PostCard key={idx} {...post} />
+          ))}
         </div>
       </div>
     </>
