@@ -5,21 +5,13 @@ var Post = defineDocumentType(() => ({
   filePathPattern: `posts/**/*.mdx`,
   contentType: "mdx",
   fields: {
-    title: {
-      type: "string",
-      description: "The title of the post",
-      required: true
-    },
-    date: {
-      type: "date",
-      description: "The date of the post",
-      required: true
-    }
+    title: { type: "string", required: true },
+    date: { type: "date", required: true }
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/${doc._raw.flattenedPath}`
+      resolve: (doc) => `/posts/${doc._raw.flattenedPath.replace(/^posts\//, "")}`
     }
   }
 }));
@@ -69,4 +61,4 @@ var contentlayer_config_default = makeSource({
 export {
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-O2RJRICE.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-KQZ4DJ4Q.mjs.map

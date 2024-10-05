@@ -13,9 +13,7 @@ export type Post = {
   _id: string
   _raw: Local.RawDocumentData
   type: 'Post'
-  /** The title of the post */
   title: string
-  /** The date of the post */
   date: IsoDateTimeString
   /** MDX file body */
   body: MDX
