@@ -27,7 +27,7 @@ export const generateMetadata = ({
   console.log("Metadata - Found post:", post);
 
   if (!post) return { title: "Post Not Found" };
-  return { title: post.title };
+  return { title: `${post.title}` };
 };
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {

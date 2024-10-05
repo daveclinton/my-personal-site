@@ -1,70 +1,21 @@
 import Link from "@/components/Link";
-import { Rss, Github, ExternalLink } from "lucide-react";
+import { Rss, Github } from "lucide-react";
 import SocialIcon from "@/components/social-icons";
 import CustomLink from "@/components/Link";
 import EnhancedEmailSection from "@/components/EmailEnhanced";
 import { siteMetadata } from "@/data/siteMetadata";
 import Image from "@/components/Image";
-import { allPosts, allProjects, Post, Project } from "contentlayer/generated";
-import { compareDesc, format, parseISO } from "date-fns";
-
-function ProjectCard(project: Project) {
-  return (
-    <div className="w-full overflow-hidden">
-      <div className="py-2">
-        <div className="flex justify-between items-start">
-          <Link
-            href={project.link}
-            className="group flex items-center text-xl font-bold text-pink-400  hover:text-pink-900 dark:hover:text-pink-400 transition-colors"
-          >
-            {project.title}
-            <ExternalLink className="ml-1 h-4 w-4 group-hover:opacity-100 transition-opacity" />
-          </Link>
-        </div>
-
-        <p className="text-gray-600 dark:text-gray-300 mb-2">
-          {project.description}
-        </p>
-
-        <p className="text-gray-600 dark:text-gray-300 font-bold">
-          Technologies
-        </p>
-
-        <div className="flex flex-wrap gap-1">
-          {project.technologies.map((tech, index) => (
-            <span
-              key={index}
-              className="py-1 text-sm text-gray-600 dark:text-gray-300"
-            >
-              *{tech}*
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PostsCard(post: Post) {
-  return (
-    <div className="w-full overflow-hidden">
-      <div className="flex gap-x-3 items-center">
-        <time dateTime={post.date} className="block mb-2 text-gray-600">
-          {format(parseISO(post.date), "LLLL d, yyyy")}
-        </time>
-        <Link href={post.url} className="text-gray-600 dark:text-gray-300 mb-2">
-          {post.title}
-        </Link>
-      </div>
-    </div>
-  );
-}
+import { allPosts, allProjects } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
+import PostsCard from "@/components/Posts";
+import { ProjectCard } from "@/components/ProjectCard";
 
 export default async function Page() {
   const projects = allProjects;
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  );
+
+  const latestPosts = allPosts
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+    .slice(0, 4);
   return (
     <>
       <div>
@@ -143,10 +94,10 @@ export default async function Page() {
             section.
           </p>
         </div>
-        <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
-          {`I've written about 🪙`}
+        <h1 className="text-xl font-extrabold leading-9 mb-2 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
+          {`Latest Posts 🪙`}
         </h1>
-        {posts.map((post, idx) => (
+        {latestPosts.map((post, idx) => (
           <PostsCard key={idx} {...post} />
         ))}
         <h1 className="text-xl font-extrabold mt-5 leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
