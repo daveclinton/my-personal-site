@@ -5,10 +5,6 @@ import { Metadata } from "next";
 import SEO from "@/components/SEO";
 
 export const generateStaticParams = async () => {
-  console.log(
-    "Generated paths:",
-    allPosts.map((post) => post._raw.flattenedPath)
-  );
   return allPosts.map((post) => ({
     slug: post._raw.flattenedPath.replace(/^posts\//, ""),
   }));
@@ -19,14 +15,9 @@ export const generateMetadata = ({
 }: {
   params: { slug: string };
 }): Metadata => {
-  console.log("Metadata - All posts:", allPosts);
-  console.log("Metadata - Looking for slug:", params.slug);
-
   const post = allPosts.find(
     (p) => p._raw.flattenedPath.replace(/^posts\//, "") === params.slug
   );
-  console.log("Metadata - Found post:", post);
-
   if (!post) return { title: "Post Not Found" };
 
   return {
@@ -56,13 +47,9 @@ export const generateMetadata = ({
 };
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
-  console.log("Layout - All posts:", allPosts);
-  console.log("Layout - Looking for slug:", params.slug);
-
   const post = allPosts.find(
     (p) => p._raw.flattenedPath.replace(/^posts\//, "") === params.slug
   );
-  console.log("Layout - Found post:", post);
 
   if (!post) {
     return (
