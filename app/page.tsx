@@ -5,8 +5,17 @@ import CustomLink from "@/components/Link";
 import EnhancedEmailSection from "@/components/EmailEnhanced";
 import { siteMetadata } from "@/data/siteMetadata";
 import Image from "@/components/Image";
+import { allPosts, allProjects } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
+import PostsCard from "@/components/Posts";
+import { ProjectCard } from "@/components/ProjectCard";
 
 export default async function Page() {
+  const projects = allProjects;
+
+  const latestPosts = allPosts
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+    .slice(0, 4);
   return (
     <>
       <div>
@@ -58,10 +67,10 @@ export default async function Page() {
           </div>
         </div>
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
+          <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
             Hey Legend 😊,
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          <p className="text-lg leading-7 text-gray-500 dark:text-gray-200">
             All things here are Software Engineering related! You can subscribe
             to receive an article straight into your inbox every Sunday! on my
             <Link
@@ -70,11 +79,6 @@ export default async function Page() {
             >
               {` Substack. `}
             </Link>
-            You can also check out my
-            <Link href="/projects" className="text-pink-500">
-              {` Projects `}
-            </Link>{" "}
-            Here
             <br />
             <br />
             My posts are a collaborative space, so feel free to reply if: 🧰
@@ -89,6 +93,34 @@ export default async function Page() {
             </Link>
             section.
           </p>
+        </div>
+        <h1 className="text-xl font-extrabold leading-9 mb-2 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
+          {`Latest Posts 🪙`}
+        </h1>
+        {latestPosts.map((post, idx) => (
+          <PostsCard key={idx} {...post} />
+        ))}
+        <div className="mt-4 mb-6 text-right">
+          <Link
+            href="/blog"
+            className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
+          >
+            View more posts →
+          </Link>
+        </div>
+        <h1 className="text-xl font-extrabold mt-5 leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
+          {`A few things I've Built 💻`}
+        </h1>
+        {projects.map((project, idx) => (
+          <ProjectCard key={idx} {...project} />
+        ))}
+        <div className="mt-4 mb-6 text-right">
+          <Link
+            href="/projects"
+            className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
+          >
+            View more projects →
+          </Link>
         </div>
       </div>
     </>
