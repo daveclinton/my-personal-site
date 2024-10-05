@@ -6,7 +6,9 @@ var Post = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
-    date: { type: "date", required: true }
+    date: { type: "date", required: true },
+    excerpt: { type: "string" },
+    ogImage: { type: "string" }
   },
   computedFields: {
     url: {
@@ -61,4 +63,4 @@ var contentlayer_config_default = makeSource({
 export {
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-KQZ4DJ4Q.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-FCLKPT52.mjs.map

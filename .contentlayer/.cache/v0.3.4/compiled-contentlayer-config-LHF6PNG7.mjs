@@ -6,12 +6,13 @@ var Post = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
-    date: { type: "date", required: true }
+    date: { type: "date", required: true },
+    excerpt: { type: "markdown" }
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/${doc._raw.flattenedPath.replace(/^posts\//, "")}`
+      resolve: (doc) => `/posts/${doc._raw.flattenedPath.replace(/^posts\//, "")}`
     }
   }
 }));
@@ -61,4 +62,4 @@ var contentlayer_config_default = makeSource({
 export {
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-XD33J25X.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-LHF6PNG7.mjs.map
