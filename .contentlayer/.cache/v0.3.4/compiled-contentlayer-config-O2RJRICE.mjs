@@ -19,7 +19,7 @@ var Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/posts/${doc._raw.flattenedPath}`
+      resolve: (doc) => `/${doc._raw.flattenedPath}`
     }
   }
 }));
@@ -33,15 +33,26 @@ var Projects = defineDocumentType(() => ({
       description: "The title of the project",
       required: true
     },
-    date: {
-      type: "date",
-      description: "The date of the project",
+    description: {
+      type: "string",
+      description: "A brief description of the project",
       required: true
+    },
+    technologies: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+      description: "List of technologies used in the project"
     },
     link: {
       type: "string",
       description: "The link of the project",
       required: true
+    },
+    status: {
+      type: "enum",
+      options: ["In Progress", "Completed", "On Hold"],
+      default: "In Progress"
     }
   },
   computedFields: {
@@ -58,4 +69,4 @@ var contentlayer_config_default = makeSource({
 export {
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-JKZJ7RWR.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-O2RJRICE.mjs.map

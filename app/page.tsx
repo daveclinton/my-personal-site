@@ -5,9 +5,10 @@ import CustomLink from "@/components/Link";
 import EnhancedEmailSection from "@/components/EmailEnhanced";
 import { siteMetadata } from "@/data/siteMetadata";
 import Image from "@/components/Image";
-import { allProjects, Project } from "contentlayer/generated";
+import { allPosts, allProjects, Post, Project } from "contentlayer/generated";
+import { compareDesc, format, parseISO } from "date-fns";
 
-function PostCard(project: Project) {
+function ProjectCard(project: Project) {
   return (
     <div className="w-full overflow-hidden">
       <div className="py-2">
@@ -44,8 +45,26 @@ function PostCard(project: Project) {
   );
 }
 
+function PostsCard(post: Post) {
+  return (
+    <div className="w-full overflow-hidden">
+      <div className="flex gap-x-3 items-center">
+        <time dateTime={post.date} className="block mb-2 text-gray-600">
+          {format(parseISO(post.date), "LLLL d, yyyy")}
+        </time>
+        <Link href={post.url} className="text-gray-600 dark:text-gray-300 mb-2">
+          {post.title}
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 export default async function Page() {
-  const posts = allProjects;
+  const projects = allProjects;
+  const posts = allPosts.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
   return (
     <>
       <div>
@@ -124,12 +143,17 @@ export default async function Page() {
             section.
           </p>
         </div>
-
         <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
-          {`A few things I've Built 💻`}
+          {`I've written about 🪙`}
         </h1>
         {posts.map((post, idx) => (
-          <PostCard key={idx} {...post} />
+          <PostsCard key={idx} {...post} />
+        ))}
+        <h1 className="text-xl font-extrabold mt-5 leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
+          {`A few things I've Built 💻`}
+        </h1>
+        {projects.map((project, idx) => (
+          <ProjectCard key={idx} {...project} />
         ))}
       </div>
     </>
