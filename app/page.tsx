@@ -102,7 +102,7 @@ export default async function Page() {
         ))}
         <div className="mt-4 mb-6 text-right">
           <Link
-            href="/posts"
+            href="/all-posts"
             className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
           >
             View more posts →
