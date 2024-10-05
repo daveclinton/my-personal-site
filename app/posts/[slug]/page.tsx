@@ -8,7 +8,9 @@ export const generateStaticParams = async () => {
     "Generated paths:",
     allPosts.map((post) => post._raw.flattenedPath)
   );
-  return allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+  return allPosts.map((post) => ({
+    slug: post._raw.flattenedPath.replace(/^posts\//, ""),
+  }));
 };
 
 export const generateMetadata = ({
@@ -19,7 +21,9 @@ export const generateMetadata = ({
   console.log("Metadata - All posts:", allPosts);
   console.log("Metadata - Looking for slug:", params.slug);
 
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const post = allPosts.find(
+    (p) => p._raw.flattenedPath.replace(/^posts\//, "") === params.slug
+  );
   console.log("Metadata - Found post:", post);
 
   if (!post) return { title: "Post Not Found" };
@@ -30,7 +34,9 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   console.log("Layout - All posts:", allPosts);
   console.log("Layout - Looking for slug:", params.slug);
 
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const post = allPosts.find(
+    (p) => p._raw.flattenedPath.replace(/^posts\//, "") === params.slug
+  );
   console.log("Layout - Found post:", post);
 
   if (!post) {
