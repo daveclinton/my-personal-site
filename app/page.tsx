@@ -10,7 +10,7 @@ import { allProjects, Project } from "contentlayer/generated";
 function PostCard(project: Project) {
   return (
     <div className="w-full overflow-hidden">
-      <div className="p-2">
+      <div className="py-2">
         <div className="flex justify-between items-start">
           <Link
             href={project.link}
@@ -109,11 +109,6 @@ export default async function Page() {
             >
               {` Substack. `}
             </Link>
-            You can also check out my
-            <Link href="/projects" className="text-pink-500">
-              {` Projects `}
-            </Link>{" "}
-            Here
             <br />
             <br />
             My posts are a collaborative space, so feel free to reply if: 🧰
@@ -129,11 +124,13 @@ export default async function Page() {
             section.
           </p>
         </div>
-        <div>
-          {posts.map((post, idx) => (
-            <PostCard key={idx} {...post} />
-          ))}
-        </div>
+
+        <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
+          {`A few things I've Built 💻`}
+        </h1>
+        {posts.map((post, idx) => (
+          <PostCard key={idx} {...post} />
+        ))}
       </div>
     </>
   );
