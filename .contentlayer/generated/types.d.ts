@@ -27,10 +27,15 @@ export type Project = {
   _id: string
   _raw: Local.RawDocumentData
   type: 'Project'
-  /** The title of the post */
+  /** The title of the project */
   title: string
-  /** The date of the post */
-  date: IsoDateTimeString
+  /** A brief description of the project */
+  description: string
+  /** List of technologies used in the project */
+  technologies: string[]
+  /** The link of the project */
+  link: string
+  status: 'In Progress' | 'Completed' | 'On Hold'
   /** MDX file body */
   body: MDX
   url: string

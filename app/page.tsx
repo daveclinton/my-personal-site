@@ -5,37 +5,40 @@ import CustomLink from "@/components/Link";
 import EnhancedEmailSection from "@/components/EmailEnhanced";
 import { siteMetadata } from "@/data/siteMetadata";
 import Image from "@/components/Image";
-import { getMDXComponent } from "next-contentlayer/hooks";
-import { compareDesc, format, parseISO } from "date-fns";
 import { allProjects, Project } from "contentlayer/generated";
 
-function PostCard(post: Project) {
-  const Content = getMDXComponent(post.body.code);
+function PostCard(project: Project) {
   return (
-    <div className="mb-8">
-      <h2 className="text-xl">
-        <Link
-          href={post.url}
-          className="text-blue-700 hover:text-blue-900"
-          legacyBehavior
-        >
-          {post.title}
-        </Link>
-      </h2>
-      <time dateTime={post.date} className="block mb-2 text-xs text-gray-600">
-        {format(parseISO(post.date), "LLLL d, yyyy")}
-      </time>
-      <div className="text-sm">
-        <Content />
+    <div className="w-full  overflow-hidden">
+      <div className="p-2">
+        <div className="flex justify-between items-start">
+          <Link
+            href={project.link}
+            className="text-xl font-bold text-gray-900 dark:text-white"
+          >
+            {project.title}
+          </Link>
+        </div>
+        <p className="text-gray-600 dark:text-gray-300 mb-2">
+          {project.description}
+        </p>
+        <p className="text-gray-600 dark:text-gray-300 font-bold">
+          Technolgies
+        </p>
+        <div className="flex flex-wrap gap-1">
+          {project.technologies.map((tech, index) => (
+            <span key={index} className="py-1 text-sm">
+              *{tech}*
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 export default async function Page() {
-  const posts = allProjects.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  );
+  const posts = allProjects;
   return (
     <>
       <div>
@@ -87,10 +90,10 @@ export default async function Page() {
           </div>
         </div>
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
+          <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
             Hey Legend 😊,
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          <p className="text-lg leading-7 text-gray-500 dark:text-gray-200">
             All things here are Software Engineering related! You can subscribe
             to receive an article straight into your inbox every Sunday! on my
             <Link
@@ -119,7 +122,6 @@ export default async function Page() {
             section.
           </p>
         </div>
-        {/* My Posts */}
         <div>
           {posts.map((post, idx) => (
             <PostCard key={idx} {...post} />

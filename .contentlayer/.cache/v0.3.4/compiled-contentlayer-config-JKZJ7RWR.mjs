@@ -30,12 +30,17 @@ var Projects = defineDocumentType(() => ({
   fields: {
     title: {
       type: "string",
-      description: "The title of the post",
+      description: "The title of the project",
       required: true
     },
     date: {
       type: "date",
-      description: "The date of the post",
+      description: "The date of the project",
+      required: true
+    },
+    link: {
+      type: "string",
+      description: "The link of the project",
       required: true
     }
   },
@@ -53,4 +58,4 @@ var contentlayer_config_default = makeSource({
 export {
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-MLDRPJPH.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-JKZJ7RWR.mjs.map
