@@ -100,12 +100,28 @@ export default async function Page() {
         {latestPosts.map((post, idx) => (
           <PostsCard key={idx} {...post} />
         ))}
+        <div className="mt-4 mb-6 text-right">
+          <Link
+            href="/posts"
+            className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
+          >
+            View more posts →
+          </Link>
+        </div>
         <h1 className="text-xl font-extrabold mt-5 leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
           {`A few things I've Built 💻`}
         </h1>
         {projects.map((project, idx) => (
           <ProjectCard key={idx} {...project} />
         ))}
+        <div className="mt-4 mb-6 text-right">
+          <Link
+            href="/projects"
+            className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
+          >
+            View more projects →
+          </Link>
+        </div>
       </div>
     </>
   );
