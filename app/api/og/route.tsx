@@ -23,7 +23,10 @@ export async function GET(request: NextRequest) {
             flexDirection: "column",
             alignItems: "flex-start",
             justifyContent: "center",
-            backgroundColor: "#fff",
+            backgroundColor: "#fff", // fallback color
+            backgroundImage:
+              "radial-gradient(ellipse at right, #374151, #111827, #000000)", // radial gradient
+            color: "#000", // text color
             padding: "40px",
           }}
         >
@@ -31,7 +34,7 @@ export async function GET(request: NextRequest) {
             style={{
               fontSize: 60,
               fontWeight: "bold",
-              color: "#000",
+              color: "#fff",
               marginBottom: "20px",
               lineHeight: 1.2,
             }}
@@ -39,7 +42,7 @@ export async function GET(request: NextRequest) {
             {title}
           </div>
           {date && (
-            <div style={{ fontSize: 30, color: "#666" }}>
+            <div style={{ fontSize: 30, color: "#fff" }}>
               {new Date(date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
@@ -53,7 +56,7 @@ export async function GET(request: NextRequest) {
               bottom: "40px",
               right: "40px",
               fontSize: 24,
-              color: "#999",
+              color: "#fff",
             }}
           >
             By David Clinton
