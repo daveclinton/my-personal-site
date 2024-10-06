@@ -14,7 +14,7 @@ declare module "@vercel/og" {
     debug?: boolean;
   }
 
-  export class ImageResponse {
+  export class ImageResponse extends Response {
     constructor(element: ReactElement, options?: ImageResponseOptions);
   }
 }
