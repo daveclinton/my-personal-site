@@ -9,7 +9,7 @@ export function ProjectCard(project: Project) {
         <div className="flex justify-between items-start">
           <Link
             href={project.link}
-            className="group flex items-center text-xl font-bold text-pink-400  hover:text-pink-900 dark:hover:text-pink-400 transition-colors"
+            className="group flex items-center text-md font-bold text-pink-400  hover:text-pink-900 dark:hover:text-pink-400 transition-colors"
           >
             {project.title}
             <ExternalLink className="ml-1 h-4 w-4 group-hover:opacity-100 transition-opacity" />
