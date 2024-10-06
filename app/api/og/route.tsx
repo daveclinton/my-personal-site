@@ -20,8 +20,8 @@ export async function GET(request: NextRequest) {
             height: "100%",
             width: "100%",
             display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
+            flexDirection: "row",
+            alignItems: "center",
             justifyContent: "center",
             backgroundColor: "#fff", // fallback color
             backgroundImage:
