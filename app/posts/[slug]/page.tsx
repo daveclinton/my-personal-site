@@ -19,8 +19,35 @@ export const generateMetadata = ({
   );
   if (!post) return { title: "Post Not Found" };
 
+  const ogImageUrl = `${
+    process.env.NEXT_PUBLIC_BASE_URL
+  }/api/og?title=${encodeURIComponent(post.title)}&date=${encodeURIComponent(
+    post.date
+  )}`;
+
   return {
     title: `${post.title} | David Clinton's Site`,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${params.slug}`,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [ogImageUrl],
+    },
   };
 };
 
