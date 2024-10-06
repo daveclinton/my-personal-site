@@ -4,8 +4,8 @@ import { withContentlayer } from 'next-contentlayer'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  images: {
-    domains: ['https://daveclintonn.cc'],
+   images: {
+    domains: ['daveclintonn.cc'],
   },
   webpack(config) {
     config.experiments = { ...config.experiments, topLevelAwait: true }

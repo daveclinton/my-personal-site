@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
               color: "#999",
             }}
           >
-            David Clinton&apos;s Site
+            By David Clinton
           </div>
         </div>
       ),

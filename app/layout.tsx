@@ -3,11 +3,12 @@ import "./globals.css";
 import SectionContainer from "@/components/SectionContainer";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getBaseUrl } from "@/utils/url";
+
+const baseUrl = getBaseUrl();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
-  ),
+  metadataBase: new URL(baseUrl),
   title: {
     default: "David Clinton's Site",
     template: "%s | David Clinton",
@@ -22,6 +23,14 @@ export const metadata: Metadata = {
     siteName: "David Clinton's Site",
     locale: "en-US",
     type: "website",
+    images: [
+      {
+        url: `${baseUrl}/api/og?title=David Clinton's Site`,
+        width: 1200,
+        height: 628,
+        alt: "David Clinton's Site",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -30,6 +39,10 @@ export const metadata: Metadata = {
       template: "%s | David Clinton",
     },
     description: "David Clinton's personal website and blog",
+    images: [`${baseUrl}/api/og?title=David Clinton's Site`],
+  },
+  alternates: {
+    canonical: baseUrl,
   },
 };
 
