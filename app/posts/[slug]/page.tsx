@@ -2,6 +2,7 @@ import { format, parseISO } from "date-fns";
 import { allPosts } from "contentlayer/generated";
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { Metadata } from "next";
+import { getBaseUrl, generateOgImageUrl } from "@/utils/url";
 
 export const generateStaticParams = async () => {
   return allPosts.map((post) => ({
@@ -19,34 +20,36 @@ export const generateMetadata = ({
   );
   if (!post) return { title: "Post Not Found" };
 
-  const ogImageUrl = `${
-    process.env.NEXT_PUBLIC_BASE_URL
-  }/api/og?title=${encodeURIComponent(post.title)}&date=${encodeURIComponent(
-    post.date
-  )}`;
+  const pagePath = `/posts/${params.slug}`;
+  const baseUrl = getBaseUrl();
+  const fullUrl = `${baseUrl}${pagePath}`;
+  const ogImageUrl = generateOgImageUrl(post.title, post.date);
 
   return {
-    title: `${post.title} | David Clinton's Site`,
+    title: post.title,
     description: post.description,
     openGraph: {
       title: post.title,
       description: post.description,
-      type: "article",
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${params.slug}`,
+      url: fullUrl,
       images: [
         {
           url: ogImageUrl,
           width: 1200,
-          height: 630,
+          height: 628,
           alt: post.title,
         },
       ],
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
       images: [ogImageUrl],
+    },
+    alternates: {
+      canonical: fullUrl,
     },
   };
 };
@@ -76,17 +79,15 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const Content = getMDXComponent(post.body.code);
 
   return (
-    <>
-      <article className="py-8 mx-auto max-w-xl">
-        <div className="mb-8 text-center">
-          <time dateTime={post.date} className="mb-1 text-xs text-gray-600">
-            {format(parseISO(post.date), "LLLL d, yyyy")}
-          </time>
-          <h1>{post.title}</h1>
-        </div>
-        <Content />
-      </article>
-    </>
+    <article className="py-8 mx-auto max-w-xl">
+      <div className="mb-8 text-center">
+        <time dateTime={post.date} className="mb-1 text-xs text-gray-600">
+          {format(parseISO(post.date), "LLLL d, yyyy")}
+        </time>
+        <h1>{post.title}</h1>
+      </div>
+      <Content />
+    </article>
   );
 };
 
