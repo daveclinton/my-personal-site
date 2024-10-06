@@ -10,17 +10,17 @@ const baseUrl = getBaseUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "David Clinton's Site",
+    default: "David Clinton's personal website and blog",
     template: "%s | David Clinton",
   },
-  description: "David Clinton's personal website and blog",
+  description: "Get to know what I do, and how I do it!",
   openGraph: {
     title: {
-      default: "David Clinton's Site",
+      default: "David Clinton portfolio and blog",
       template: "%s | David Clinton",
     },
-    description: "David Clinton's personal website and blog",
-    siteName: "David Clinton's Site",
+    description: "Get to know what I do, and how I do it!",
+    siteName: "David Clinton's personal website and blog",
     locale: "en-US",
     type: "website",
     images: [
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: {
-      default: "David Clinton's Site",
+      default: "David Clinton portfolio and blog",
       template: "%s | David Clinton",
     },
-    description: "David Clinton's personal website and blog",
+    description: "Get to know what I do, and how I do it!",
     images: [`${baseUrl}/api/og?title=David Clinton's Site`],
   },
   alternates: {
