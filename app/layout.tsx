@@ -5,8 +5,32 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "David Clinton",
-  description: "My Digital Orbit",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+  ),
+  title: {
+    default: "David Clinton's Site",
+    template: "%s | David Clinton",
+  },
+  description: "David Clinton's personal website and blog",
+  openGraph: {
+    title: {
+      default: "David Clinton's Site",
+      template: "%s | David Clinton",
+    },
+    description: "David Clinton's personal website and blog",
+    siteName: "David Clinton's Site",
+    locale: "en-US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: {
+      default: "David Clinton's Site",
+      template: "%s | David Clinton",
+    },
+    description: "David Clinton's personal website and blog",
+  },
 };
 
 export default function RootLayout({
