@@ -9,7 +9,10 @@ export default function PostsCard(post: Post) {
         <time dateTime={post.date} className="block mb-2 text-gray-600">
           {format(parseISO(post.date), "d LLL,  yyyy")}
         </time>
-        <Link href={post.url} className="text-gray-600 dark:text-gray-300 mb-2">
+        <Link
+          href={post.url}
+          className="text-gray-600 underline dark:text-gray-300 mb-2"
+        >
           {post.title}
         </Link>
       </div>
