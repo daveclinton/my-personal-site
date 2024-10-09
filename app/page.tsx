@@ -5,10 +5,11 @@ import CustomLink from "@/components/Link";
 import EnhancedEmailSection from "@/components/EmailEnhanced";
 import { siteMetadata } from "@/data/siteMetadata";
 import Image from "@/components/Image";
-import { allPosts, allProjects } from "contentlayer/generated";
+import { allHomes, allPosts, allProjects } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import PostsCard from "@/components/Posts";
 import { ProjectCard } from "@/components/ProjectCard";
+import { getMDXComponent } from "next-contentlayer/hooks";
 
 export default async function Page() {
   const projects = allProjects;
@@ -16,6 +17,10 @@ export default async function Page() {
   const latestPosts = allPosts
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
     .slice(0, 4);
+
+  const home = allHomes;
+
+  const Content = getMDXComponent(home[0].body.code);
   return (
     <>
       <div>
@@ -66,33 +71,8 @@ export default async function Page() {
             </div>
           </div>
         </div>
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
-            Hey Legend 😊,
-          </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-200">
-            All things here are Software Engineering related! You can subscribe
-            to receive an article straight into your inbox every Sunday! on my
-            <Link
-              href="https://daveclintonn.substack.com/"
-              className="text-pink-500"
-            >
-              {` Substack. `}
-            </Link>
-            <br />
-            <br />
-            My posts are a collaborative space, so feel free to reply if: 🧰
-            There’s a topic you’re curious about and would love to read about on
-            my blog. 🪜 You know about good resources that could benefit fellow
-            aspiring Software Engineers. 😁 You just want to say hello. :)
-            <br />
-            <br />I will always be happy to share more with you. Check out my
-            about here; :)
-            <Link href="/about" className="text-pink-500">
-              {` About `}
-            </Link>
-            section.
-          </p>
+        <div className="prose dark:prose-invert my-3 max-w-4xl">
+          <Content />
         </div>
         <h1 className="text-xl font-extrabold leading-9 mb-2 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
           {`Latest Posts 🪙`}
