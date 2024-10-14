@@ -1,10 +1,8 @@
-import type { Metadata } from "next";
+import { getBaseUrl } from "@/utils/url";
 import "./globals.css";
-import SectionContainer from "@/components/SectionContainer";
+import { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getBaseUrl } from "@/utils/url";
-
 const baseUrl = getBaseUrl();
 
 export const metadata: Metadata = {
@@ -48,17 +46,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className="bg-gray-900 from-gray-700 via-gray-900 to-black text-black antialiased dark:bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] dark:text-white">
-        <SectionContainer>
-          <Header />
-          <main className="mb-auto">{children}</main>
-          <Footer />
-        </SectionContainer>
+      <body className="min-h-screen flex flex-col bg-gray-900 text-white">
+        <Header />
+        <main className="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

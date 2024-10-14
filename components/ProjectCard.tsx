@@ -1,8 +1,8 @@
-import { Project } from "@/.contentlayer/generated";
+import { ClientWork, Project } from "@/.contentlayer/generated";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
-export function ProjectCard(project: Project) {
+export function ProjectCard(project: Project | ClientWork) {
   return (
     <div className="w-full overflow-hidden">
       <div className="py-2">
