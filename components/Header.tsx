@@ -22,7 +22,7 @@ const Header = () => {
   ];
   return (
     <React.Fragment>
-      <header className="sticky top-0 z-10 bg-gray-900 shadow-md">
+      <header className="sticky top-0 z-10 bg-[#1F1F22] shadow-md">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="text-2xl font-bold">
@@ -63,12 +63,12 @@ const Header = () => {
         </div>
       </header>
       <div
-        className={`fixed inset-0 z-20 bg-gray-900 bg-opacity-90 transition-opacity duration-300 ${
+        className={`fixed inset-0 z-20 bg-[#1F1F22] bg-opacity-90 transition-opacity duration-300 ${
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
         <div
-          className={`fixed inset-y-0 right-0 max-w-4xl w-full bg-gray-800 shadow-xl transition-transform duration-300 ease-in-out transform ${
+          className={`fixed inset-y-0 right-0 max-w-4xl w-full bg-[#1F1F22] shadow-xl transition-transform duration-300 ease-in-out transform ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >

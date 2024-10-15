@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function HeroSection() {
   return (
-    <section className="bg-gray-800 rounded-lg p-8 mb-12 ">
+    <section className="bg-[#1F1F22] rounded-lg p-8 mb-12 ">
       <div className="flex items-center mb-6">
         <div className="relative">
           <div className="absolute  rounded-full animate-ping">
@@ -24,7 +24,7 @@ export default function HeroSection() {
         </div>
       </div>
       <p className="mb-4">
-        Looking to hire me? Email me @ contact@daveclinton.cc 📋
+        Looking to hire me? Email me : contact@daveclinton.cc 📋
       </p>
       <p>
         Need consulting? Book a call with me{" "}
