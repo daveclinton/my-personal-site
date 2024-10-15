@@ -1,6 +1,17 @@
+"use client";
+import { Copy } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 export default function HeroSection() {
+  const [isCopied, setIsCopied] = useState(false);
+  const email = "clintondavid46@gmail.com";
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(email);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
   return (
     <section className="bg-[#1F1F22] rounded-lg p-8 mb-12 ">
       <div className="flex items-center mb-6">
@@ -23,8 +34,16 @@ export default function HeroSection() {
           <p className="text-gray-400">Mobile & Frontend Engineer</p>
         </div>
       </div>
-      <p className="mb-4">
-        Looking to hire me? Email me : contact@daveclinton.cc 📋
+      <p
+        onClick={copyEmail}
+        className="mb-4 flex items-center gap-x-2 cursor-pointer"
+      >
+        Looking to hire me? Email me : contact@daveclinton.cc
+        {isCopied ? (
+          <span className="text-green-500">✓</span>
+        ) : (
+          <Copy size={15} />
+        )}
       </p>
       <p>
         Need consulting? Book a call with me{" "}

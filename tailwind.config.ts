@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -15,6 +16,27 @@ const config: Config = {
       animation: {
         "spin-slow": "spin 3s linear infinite",
       },
+      typography: (theme: (arg0: string) => any) => ({
+        DEFAULT: {
+          css: {
+            a: {
+              color: theme("colors.pink.500"),
+              textDecoration: "none",
+              "&:hover": {
+                color: theme("colors.pink.600"),
+              },
+            },
+            h2: {
+              color: theme("colors.pink.500"),
+              textDecoration: "none",
+            },
+            strong: {
+              color: theme("colors.pink.500"),
+              textDecoration: "none",
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [
