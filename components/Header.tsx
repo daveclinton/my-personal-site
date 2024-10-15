@@ -16,6 +16,7 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const menuItems = [
+    { href: "/", label: "Home" },
     { href: "/client-work", label: "Client Work" },
     { href: "/projects", label: "Projects" },
     { href: "/about", label: "About" },
