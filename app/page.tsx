@@ -24,7 +24,7 @@ export default function Home() {
         <Content />
       </div>
       <section className="mt-10">
-        <h2 className="text-xl font-bold mb-6">Some Client Works</h2>
+        <h2 className="mb-2 text-lg font-semibold">Some Client Works</h2>
         {clientWork.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
@@ -33,7 +33,7 @@ export default function Home() {
         </Link>
       </section>
       <section className="mt-10">
-        <h2 className="text-xl font-bold mb-6">
+        <h2 className="mb-2 text-lg font-semibold">
           A few things I&apos;ve Built 🏗️
         </h2>
         {projects.map((project, idx) => (
