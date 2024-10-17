@@ -2,16 +2,26 @@
 import { Copy, Github, Linkedin, Rss } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function HeroSection() {
   const [isCopied, setIsCopied] = useState(false);
   const email = "contact@daveclintonn.cc";
+
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
+
+  useEffect(() => {
+    fetch("/api/visitor-count")
+      .then((response) => response.json())
+      .then((data) => setVisitorCount(data.count))
+      .catch((error) => console.log("Error fetching visitor count", error));
+  }, []);
+
   return (
     <section className="bg-[#1F1F22] rounded-lg p-8 mb-12 ">
       <div className="flex items-center mb-6">
@@ -77,6 +87,11 @@ export default function HeroSection() {
           <Github />
         </Link>
       </div>
+      {visitorCount !== null && (
+        <p className="mt-4 text-sm text-gray-400">
+          Visitor count: {visitorCount}
+        </p>
+      )}
     </section>
   );
 }
