@@ -1,26 +1,16 @@
-"use client";
-import { Copy, Github, Linkedin, Rss } from "lucide-react";
+import { Github, Linkedin, Rss } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-export default function HeroSection() {
-  const [isCopied, setIsCopied] = useState(false);
-  const email = "contact@daveclintonn.cc";
+import { EmailCopy } from "./EmailCopy";
 
-  const [visitorCount, setVisitorCount] = useState<number | null>(null);
-
-  const copyEmail = () => {
-    navigator.clipboard.writeText(email);
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
-  };
-
-  useEffect(() => {
-    fetch("/api/visitor-count")
-      .then((response) => response.json())
-      .then((data) => setVisitorCount(data.count))
-      .catch((error) => console.log("Error fetching visitor count", error));
-  }, []);
+export default async function HeroSection() {
+  let visitorCount;
+  try {
+    visitorCount = await getVisitorCount();
+  } catch (error) {
+    console.error("Error fetching visitor count:", error);
+    visitorCount = null;
+  }
 
   return (
     <section className="bg-[#1F1F22] rounded-lg p-8 mb-12 ">
@@ -44,17 +34,7 @@ export default function HeroSection() {
           <p className="text-gray-400">Mobile & Frontend Engineer</p>
         </div>
       </div>
-      <p
-        onClick={copyEmail}
-        className="mb-4 flex items-center gap-x-2 cursor-pointer"
-      >
-        Looking to hire me? Email me : contact@daveclinton.cc
-        {isCopied ? (
-          <span className="text-green-500">✓</span>
-        ) : (
-          <Copy size={15} color="" />
-        )}
-      </p>
+      <EmailCopy />
       <p>
         Need consulting? Book a call with me{" "}
         <Link
@@ -94,4 +74,23 @@ export default function HeroSection() {
       )}
     </section>
   );
+}
+
+async function getVisitorCount() {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/visitor-count`,
+      {
+        cache: "no-store",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch visitor count");
+    }
+    const data = await response.json();
+    return data.count;
+  } catch (error) {
+    console.error("Error fetching visitor count:", error);
+    return null;
+  }
 }
