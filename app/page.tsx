@@ -23,7 +23,7 @@ export default function Home() {
       <div className="prose dark:prose-invert my-5 max-w-4xl">
         <Content />
       </div>
-      <section className="mt-10">
+      <section className="mt-10 flex flex-col gap-3">
         <h2 className="mb-2 text-lg font-semibold">Some Client Works</h2>
         {clientWork.map((project, index) => (
           <ProjectCard key={index} {...project} />
@@ -32,7 +32,7 @@ export default function Home() {
           View more projects →
         </Link>
       </section>
-      <section className="mt-10">
+      <section className="mt-10 flex flex-col gap-3">
         <h2 className="mb-2 text-lg font-semibold">
           A few things I&apos;ve Built 🏗️
         </h2>
