@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 export default function HeroSection() {
   const [isCopied, setIsCopied] = useState(false);
-  const email = "clintondavid46@gmail.com";
+  const email = "contact@daveclintonn.cc";
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
