@@ -1,16 +1,24 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
-import { useState } from "react";
-import Confetti from "react-confetti";
+import React, { useState, useEffect } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
+import Confetti from "react-confetti";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
   const size = useWindowSize();
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  useEffect(() => {
+    if (showConfetti) {
+      const timer = setTimeout(() => setShowConfetti(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showConfetti]);
+
+  async function handleSubmit(e: any) {
     e.preventDefault();
     setIsLoading(true);
     setMessage("");
@@ -28,11 +36,12 @@ export default function Footer() {
       if (response.ok) {
         setMessage(data.message || "Successfully subscribed!");
         setEmail("");
+        setShowConfetti(true);
       } else {
         setMessage(data.message || "An error occurred. Please try again.");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setMessage("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
@@ -40,12 +49,10 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#1F1F22] text-center py-8">
-      <Confetti
-        width={size.width || 0}
-        height={size.height || 0}
-        recycle={false}
-      />
+    <footer className="bg-[#1F1F22] text-center py-8 relative overflow-hidden">
+      {showConfetti && (
+        <Confetti width={size.width || 300} height={size.height || 300} />
+      )}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <form onSubmit={handleSubmit} className="mb-6">
           <h2 className="text-xl font-bold mb-4 text-white">
@@ -82,6 +89,38 @@ export default function Footer() {
           &copy; 2024 David Clinton. All rights reserved.
         </p>
       </div>
+      <style jsx>{`
+        .confetti-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.3s ease-out;
+        }
+        .confetti-container.active {
+          opacity: 1;
+        }
+        .confetti {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: #f0f;
+          animation: confetti-fall 5s ease-out infinite;
+        }
+        @keyframes confetti-fall {
+          0% {
+            transform: translateY(-100%) rotate(0deg);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(100vh) rotate(720deg);
+            opacity: 0;
+          }
+        }
+      `}</style>
     </footer>
   );
 }
