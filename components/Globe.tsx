@@ -1,10 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React from "react";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import { Loader2 } from "lucide-react";
+import type { GeoJsonObject } from "geojson";
+import type * as THREE from "three";
+interface CityData {
+  latitude: number;
+  longitude: number;
+  visits: number;
+}
 
 interface Props {
-  data: any;
+  data: CityData[];
   width?: number;
   height?: number;
 }
@@ -13,30 +20,31 @@ const GlobeAllCities: React.FC<Props> = ({
   data,
   width = 390,
   height = 458,
-  // mobile
-  // width = 360,
-  // height = 438,
 }) => {
   const globeRef = useRef<HTMLDivElement>(null);
+  const worldRef = useRef<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    let world: any;
+  const initGlobe = useCallback(async () => {
+    try {
+      const [geoJson, GlobeModule, THREE] = await Promise.all([
+        import("../utils/globe.geojson.json") as Promise<GeoJsonObject>,
+        import("globe.gl"),
+        import("three"),
+      ]);
 
-    const initGlobe = async () => {
-      const geoJson = await import("../utils/globe.geojson.json");
-      const GlobeModule = await import("globe.gl");
       const Globe = GlobeModule.default;
-      const THREE = await import("three");
 
-      const points = data.map((item: any) => ({
+      const points = data.map((item) => ({
         lat: item.latitude,
         lng: item.longitude,
         altitude: Math.min(0.8, Math.max(0.01, item.visits / 1000)),
         radius: 0.3,
         color: "#ff69b4",
       }));
-      world = Globe({
+
+      worldRef.current = Globe({
         animateIn: true,
         rendererConfig: { antialias: true, alpha: true },
       })
@@ -58,24 +66,28 @@ const GlobeAllCities: React.FC<Props> = ({
           })
         )
         .customLayerData(
-          [...Array(500)].map(() => ({
+          Array.from({ length: 500 }, () => ({
             lat: (Math.random() - 0.5) * 180,
             lng: (Math.random() - 0.5) * 360,
             alt: Math.random() * 1.4 + 0.1,
           }))
         )
-        .customThreeObject(() => {
-          return new THREE.Mesh(
-            new THREE.SphereGeometry(0.3),
-            new THREE.MeshBasicMaterial({
-              color: "#ffffff",
-              opacity: 0.8,
-              transparent: true,
-            })
+        .customThreeObject(
+          () =>
+            new THREE.Mesh(
+              new THREE.SphereGeometry(0.3),
+              new THREE.MeshBasicMaterial({
+                color: "#ffffff",
+                opacity: 0.8,
+                transparent: true,
+              })
+            )
+        )
+        .customThreeObjectUpdate((obj: THREE.Object3D, d: any) => {
+          Object.assign(
+            obj.position,
+            worldRef.current.getCoords(d.lat, d.lng, d.alt)
           );
-        })
-        .customThreeObjectUpdate((obj: any, d: any) => {
-          Object.assign(obj.position, world.getCoords(d.lat, d.lang, d.alt));
         })
         .atmosphereColor("#ff69b4")
         .atmosphereAltitude(0.25)
@@ -86,27 +98,39 @@ const GlobeAllCities: React.FC<Props> = ({
         .showGraticules(true)
         .pointsData(points)
         .pointAltitude("altitude")
-        .pointColor("color")(globeRef.current!);
-      const orbitControls = world.controls();
+        .pointColor("color");
+
+      worldRef.current(globeRef.current!);
+      const orbitControls = worldRef.current.controls();
       orbitControls.autoRotate = true;
       orbitControls.enableZoom = false;
-    };
+    } catch (err) {
+      console.error("Error initializing globe:", err);
+      setError("Failed to initialize globe visualization");
+    }
+  }, [data, width, height]);
 
+  useEffect(() => {
     if (globeRef.current) {
       initGlobe();
     }
 
     const handleVisibility = () => {
-      if (document.visibilityState === "visible") {
-        world.controls().autoRotate = true;
-      } else {
-        world.controls().autoRotate = false;
+      if (worldRef.current) {
+        worldRef.current.controls().autoRotate =
+          document.visibilityState === "visible";
       }
     };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+
     return () => {
       document.removeEventListener("visibilitychange", handleVisibility);
+      if (worldRef.current) {
+        worldRef.current.dispose();
+      }
     };
-  }, [data, width, height]);
+  }, [initGlobe]);
 
   return (
     <div className="rounded-lg bg-[#1F1F22] shadow-lg overflow-hidden">
@@ -116,67 +140,26 @@ const GlobeAllCities: React.FC<Props> = ({
           Visualizing my worldwide impact
         </p>
       </div>
-      {!isLoaded && (
-        <div className="flex items-center flex-col p-10">
-          <FancyLoadingIndicator />
+      {error && (
+        <div className="flex items-center justify-center p-10 text-red-500">
+          <p>{error}</p>
+        </div>
+      )}
+      {!isLoaded && !error && (
+        <div className="flex items-center justify-center p-10">
+          <Loader2 className="mr-2 h-6 w-6 animate-spin text-white" />
+          <p className="text-white">Initializing globe...</p>
         </div>
       )}
       <div
         ref={globeRef}
         style={{ width: `${width}px`, height: `${height}px` }}
+        className={`bg-[#1F1F22] ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        } transition-opacity duration-300`}
       />
     </div>
   );
 };
 
 export default GlobeAllCities;
-
-function FancyLoadingIndicator() {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((oldProgress) => {
-        const newProgress = Math.min(oldProgress + Math.random() * 10, 100);
-        if (newProgress === 100) {
-          clearInterval(timer);
-        }
-        return newProgress;
-      });
-    }, 200);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  return (
-    <React.Fragment>
-      <div className="w-full max-w-md">
-        <div className="mb-4 flex items-center justify-between">
-          <span className="text-sm font-medium text-pink-300">
-            Loading Globe Data
-          </span>
-          <span className="text-sm font-medium text-pink-300">
-            {Math.round(progress)}%
-          </span>
-        </div>
-        <div className="relative h-4 bg-gray-700 rounded-full overflow-hidden">
-          <div
-            className="absolute top-0 left-0 h-full bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-500 ease-out"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      </div>
-      <div className="mt-8 flex space-x-2">
-        {[0, 1, 2].map((index) => (
-          <div
-            key={index}
-            className="w-3 h-3 bg-pink-500 rounded-full animate-bounce"
-            style={{ animationDelay: `${index * 0.15}s` }}
-          />
-        ))}
-      </div>
-    </React.Fragment>
-  );
-}
