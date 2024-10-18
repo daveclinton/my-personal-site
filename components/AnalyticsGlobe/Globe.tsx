@@ -118,6 +118,7 @@ const GlobeAllCities: React.FC<Props> = ({
     };
 
     loadGlobe();
+
     const loadingInterval = setInterval(() => {
       setLoadingProgress((prev) => {
         const next = prev + 10;
@@ -135,12 +136,14 @@ const GlobeAllCities: React.FC<Props> = ({
   }, [initGlobe]);
 
   return (
-    <div className="container mx-auto">
+    <div className="container">
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="rounded-lg shadow-lg overflow-hidden">
           <div className="px-6 py-5">
-            <h2 className="text-2xl font-bold text-white">My Global Reach</h2>
-            <p className="mt-1 text-sm text-gray-400">
+            <h2 className="text-2xl text-center lg:text-left font-bold text-white">
+              My Global Reach
+            </h2>
+            <p className="mt-1 text-sm text-center lg:text-left text-gray-400">
               Visualizing my worldwide impact
             </p>
           </div>
