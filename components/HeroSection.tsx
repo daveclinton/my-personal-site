@@ -36,7 +36,7 @@ export default async function HeroSection() {
       </div>
       <EmailCopy />
       <p>
-        Need consulting? Book a call with me{" "}
+        Need consulting? Book a call with me
         <Link
           href="https://cal.com/david-clinton-ucuv7n"
           className="text-pink-400 hover:underline"
