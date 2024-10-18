@@ -63,7 +63,7 @@ const WELCOME_EMAIL_HTML = `<!DOCTYPE html>
       <div class="header">
         <h1>Oh, you actually signed up?</h1>
       </div>
-      <p>Well, color me surprised. Welcome to the club. You're now on my list, and there's no turning back now.</p>
+      <p>Well, color me surprised. Welcome to the club. You're on my list, and there's no turning back now.</p>
       <p>In case you're wondering what you've just walked into: it's not all chaos and confusion here. I'm going to be sharing tips, tricks, and downright genius-level advice (well, most of the time) on mobile development. Stuff like React Native, Expo, WebGL, Three Fiber, and a bit of Next.js, React, and Rust—yeah, all that geeky, technical nonsense. But don't worry, I'll keep it interesting enough that you won't pass out from boredom.</p>
       <p>Stick around, who knows, you might actually learn something... or at least get a few laughs out of my ramblings. Either way, it's too late now. Welcome aboard, pal.</p>
       <div class="signature">
