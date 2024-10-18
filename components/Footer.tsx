@@ -11,7 +11,6 @@ export default function Footer() {
     e.preventDefault();
     setIsLoading(true);
     setMessage("");
-
     try {
       const response = await fetch("/api/subscribe", {
         method: "POST",
