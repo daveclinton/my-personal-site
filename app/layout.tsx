@@ -3,7 +3,6 @@ import "./globals.css";
 import { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ProgressBar from "@/components/ProgressBar";
 const baseUrl = getBaseUrl();
 
 export const metadata: Metadata = {
@@ -53,7 +52,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-[#101012] text-white">
-        <ProgressBar />
         <Header />
         <main className="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {children}

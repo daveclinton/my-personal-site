@@ -12,7 +12,7 @@ function useGlobeWidth() {
     } else if (innerWidth > 600) {
       setGlobeWidth(innerWidth / 1.5);
     } else {
-      setGlobeWidth(innerWidth / 1.5);
+      setGlobeWidth(innerWidth / 1.8);
     }
   };
 

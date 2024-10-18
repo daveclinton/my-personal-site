@@ -1,24 +1,37 @@
-import MetricCard from "@/components/MetricsCard";
-import dynamic from "next/dynamic";
+import GlobeAllCities from "@/components/AnalyticsGlobe/Globe";
+import portfolioVisits from "@/utils/sampleData";
+import { Metadata } from "next";
 
-const DynamicComponentWithNoSSR = dynamic(
-  () => import("@/components/AnalyticsGlobe/AnalyticsGlobe"),
-  { ssr: false }
-);
+export const metadata: Metadata = {
+  title: "David Clinton's Portfolio Analytics",
+  description: "Explore the analytics of my portfolio",
+  openGraph: {
+    title: "David Clinton's Analytics",
+    description: "Explore the analytics of my portfolio",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/projects`,
+    siteName: "David Clinton's Site",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=David Clinton's Projects`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en-US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "David Clinton's Portfolio Analytics",
+    description: "Explore the analytics of my portfolio",
+    images: [
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=David Clinton's Projects`,
+    ],
+  },
+};
 
 const AnalyticsPage = () => {
-  return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl">THIS PAGE IS A WORK IN PROGRESS</h1>
-      <div className="grid gap-8 lg:grid-cols-2">
-        <div className="flex">
-          <MetricCard />
-        </div>
-        <div className="flex">
-          <DynamicComponentWithNoSSR />
-        </div>
-      </div>
-    </div>
-  );
+  return <GlobeAllCities data={portfolioVisits} />;
 };
+
 export default AnalyticsPage;
