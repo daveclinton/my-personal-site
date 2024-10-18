@@ -1,7 +1,12 @@
-import AnalyticsGlobe from "@/components/AnalyticsGlobe/AnalyticsGlobe";
 import MetricCard from "@/components/MetricsCard";
+import dynamic from "next/dynamic";
 
-export default function AnalyticsPage() {
+const DynamicComponentWithNoSSR = dynamic(
+  () => import("@/components/AnalyticsGlobe/AnalyticsGlobe"),
+  { ssr: false }
+);
+
+const AnalyticsPage = () => {
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl">THIS PAGE IS A WORK IN PROGRESS</h1>
@@ -10,9 +15,10 @@ export default function AnalyticsPage() {
           <MetricCard />
         </div>
         <div className="flex">
-          <AnalyticsGlobe />
+          <DynamicComponentWithNoSSR />
         </div>
       </div>
     </div>
   );
-}
+};
+export default AnalyticsPage;
