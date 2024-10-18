@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Confetti from "react-confetti";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const size = useWindowSize();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,6 +41,11 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#1F1F22] text-center py-8">
+      <Confetti
+        width={size.width || 0}
+        height={size.height || 0}
+        recycle={false}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <form onSubmit={handleSubmit} className="mb-6">
           <h2 className="text-xl font-bold mb-4 text-white">

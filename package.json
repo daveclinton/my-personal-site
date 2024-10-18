@@ -8,7 +8,7 @@
     "build": "contentlayer build && next build",
     "start": "next start",
     "lint": "next lint",
-    "generate":" prisma generate",
+    "generate": " prisma generate",
     "migrate": "prisma migrate dev --name init"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "@types/geojson": "^7946.0.14",
     "@types/mdx": "^2.0.13",
     "@types/three": "^0.169.0",
+    "@uidotdev/usehooks": "^2.4.1",
     "@vercel/og": "^0.6.3",
     "contentlayer": "0.3.4",
     "date-fns": "^4.1.0",
@@ -35,10 +36,12 @@
     "pliny": "^0.1.6",
     "prisma": "^5.21.0",
     "react": "^18",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18",
     "react-globe.gl": "^2.27.2",
     "resend": "^4.0.0",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "useWindowSize": "link:react-use/lib/useWindowSize"
   },
   "devDependencies": {
     "@types/node": "^20",
