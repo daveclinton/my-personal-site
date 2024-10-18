@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -38,7 +39,7 @@ const metrics = [
   },
 ];
 
-function MetricItem({ metric }: { metric: (typeof metrics)[0] }) {
+function MetricItem({ metric }: any) {
   return (
     <div className="flex items-center justify-between p-4">
       <div className="flex items-center">
@@ -70,7 +71,7 @@ function MetricItem({ metric }: { metric: (typeof metrics)[0] }) {
 
 export default function MetricCard() {
   return (
-    <div className="w-full rounded-lg  shadow-lg">
+    <div className="rounded-lg bg-[#1F1F22] shadow-lg">
       <div className="px-6 py-5">
         <h2 className="text-2xl font-bold text-white">Portfolio Metrics</h2>
         <p className="mt-1 text-sm text-gray-400">
