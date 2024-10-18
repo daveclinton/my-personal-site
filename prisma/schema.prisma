@@ -17,3 +17,15 @@ model VisitorCount {
   id Int @id @default(autoincrement())
   count Int @default(0)
 }
+
+model Subscriber {
+  id String @id @default(cuid())
+  email String @unique
+  createdAt DateTime @default(now())
+}
+
+model EmailSubs {
+  id String @id @default(cuid())
+  email String @unique
+  createdAt DateTime @default(now())
+}

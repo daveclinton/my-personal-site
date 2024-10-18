@@ -8,6 +8,7 @@
     "build": "contentlayer build && next build",
     "start": "next start",
     "lint": "next lint",
+    "generate":" prisma generate",
     "migrate": "prisma migrate dev --name init"
   },
   "dependencies": {
@@ -36,6 +37,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-globe.gl": "^2.27.2",
+    "resend": "^4.0.0",
     "three": "^0.169.0"
   },
   "devDependencies": {

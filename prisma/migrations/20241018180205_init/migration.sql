@@ -1,0 +1,11 @@
+-- CreateTable
+CREATE TABLE "EmailSubs" (
+    "id" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "EmailSubs_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "EmailSubs_email_key" ON "EmailSubs"("email");
