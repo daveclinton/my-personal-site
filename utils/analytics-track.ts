@@ -20,7 +20,6 @@ export function initAnalytics() {
           await locationResponse.text()
         );
       }
-      console.log("Final analytics data to be sent:", analyticsData);
     } catch (error) {
       console.error("Error recording analytics data:", error);
     }

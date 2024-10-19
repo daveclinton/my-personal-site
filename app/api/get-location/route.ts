@@ -24,6 +24,8 @@ export async function GET(request: NextRequest) {
       );
     }
     const data = await response.json();
+
+    console.log("response data", data);
     const [latitude, longitude] = data.loc.split(",").map(Number);
     const locationData = {
       ip: data.ip,
