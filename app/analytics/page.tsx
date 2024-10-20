@@ -114,7 +114,7 @@ export default function PortfolioPage() {
               <li key={stat.name} className="flex justify-between items-center">
                 <div className="flex items-center space-x-4">
                   <stat.icon className="h-8 w-8 text-pink-600" />
-                  <span className="text-gray-200 text-xl">{stat.name}</span>
+                  <span className="text-gray-200 text-sm">{stat.name}</span>
                 </div>
                 <span className="text-pink-600 font-semibold text-2xl">
                   {stat.count.toLocaleString()}
