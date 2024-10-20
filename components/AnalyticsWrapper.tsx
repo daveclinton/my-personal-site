@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { sendAnalytics } from "@/utils/analytics-track";
 import React from "react";
 
@@ -11,11 +11,10 @@ export default function AnalyticsWrapper({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     const handleRouteChange = () => {
-      const url = pathname + searchParams.toString();
+      const url = pathname;
       sendAnalytics(url);
     };
     handleRouteChange();
@@ -25,7 +24,7 @@ export default function AnalyticsWrapper({
     return () => {
       window.removeEventListener("popstate", handleRouteChange);
     };
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return <React.Fragment>{children}</React.Fragment>;
 }
