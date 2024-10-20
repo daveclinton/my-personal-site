@@ -13,18 +13,18 @@ export default function PortfolioPage() {
   const [globeReady, setGlobeReady] = useState(false);
 
   const stats = [
-    { name: "Newsletter Subscribers", count: 1250, icon: Users },
-    { name: "Portfolio Visitors", count: 5678, icon: Eye },
-    { name: "Blogs Written", count: 42, icon: BookOpen },
-    { name: "Projects Completed", count: 37, icon: Briefcase },
+    { name: "Newsletter Subscribers", count: 5, icon: Users },
+    { name: "Portfolio Visitors", count: 89, icon: Eye },
+    { name: "Blogs Written", count: 0, icon: BookOpen },
+    { name: "Projects Completed", count: 5, icon: Briefcase },
   ];
 
   const studyPlan = [
-    { name: "/home", value: 843 },
-    { name: "/imprint", value: 46 },
-    { name: "/cancellation", value: 3 },
-    { name: "/blocks", value: 108 },
-    { name: "/documentation", value: 384 },
+    { name: "/home", value: 65 },
+    { name: "/analytics", value: 12 },
+    { name: "/client-work", value: 0 },
+    { name: "/projects", value: 10 },
+    { name: "/about", value: 0 },
   ];
 
   const onGlobeReady = useCallback(() => {
