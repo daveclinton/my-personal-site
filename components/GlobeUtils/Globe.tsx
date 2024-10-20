@@ -13,6 +13,8 @@ const GlobeComponent = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [globeReady, setGlobeReady] = useState(false);
   const globeRef = useRef<any>(null);
+  const [pointsData, setPointsData] = useState([]);
+  const [, setLoading] = useState(true);
 
   const onGlobeReady = useCallback(() => {
     setGlobeReady(true);
@@ -52,14 +54,37 @@ const GlobeComponent = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const data = [
-    {
-      lat: 29.953204744601763,
-      lng: -90.08925929478903,
-      altitude: 0.4,
-      color: "#00ff33",
-    },
-  ];
+  useEffect(() => {
+    const handleResize = () => {
+      const container = document.getElementById("globe-container");
+      if (container) {
+        const width = container.offsetWidth;
+        const height = Math.min(width, window.innerHeight * 0.7);
+        setGlobeSize({ width, height });
+      }
+    };
+
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/api/geoLocationData");
+        if (!response.ok) {
+          throw new Error("Failed to fetch geolocation data");
+        }
+        const data = await response.json();
+        setPointsData(data);
+      } catch (error) {
+        console.error("Failed to fetch geolocation data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    handleResize();
+    fetchData();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div
@@ -80,7 +105,7 @@ const GlobeComponent = () => {
         >
           <Globe
             ref={globeRef}
-            pointsData={data}
+            pointsData={pointsData}
             width={globeSize.width}
             height={globeSize.height}
             polygonsData={geoJsonData.features}
@@ -91,6 +116,10 @@ const GlobeComponent = () => {
             polygonSideColor={() => "#FEF9F2"}
             polygonAltitude={0.01}
             atmosphereColor="#E90074"
+            pointAltitude="size"
+            pointColor="color"
+            pointLabel="label"
+            pointRadius={0.5}
           />
         </div>
       )}
