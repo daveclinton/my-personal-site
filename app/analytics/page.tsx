@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
 import dynamic from "next/dynamic";
-import React, { useEffect, useState } from "react";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import {
   Users,
   Eye,
@@ -10,6 +10,7 @@ import {
   Loader2,
   CheckCircle2,
 } from "lucide-react";
+import type { GlobeMethods } from "react-globe.gl";
 
 const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
@@ -17,6 +18,8 @@ export default function PortfolioPage() {
   const [globeSize, setGlobeSize] = useState({ width: 0, height: 0 });
   const [isMounted, setIsMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  const globeEl = useRef<GlobeMethods | null>(null);
 
   const stats = [
     { name: "Newsletter Subscribers", count: 1250, icon: Users },
@@ -56,8 +59,15 @@ export default function PortfolioPage() {
 
   useEffect(() => {
     if (isMounted && globeSize.width > 0) {
-      const timer = setTimeout(() => setIsLoading(false), 1000); // Simulate loading time
+      const timer = setTimeout(() => setIsLoading(false), 1000);
       return () => clearTimeout(timer);
+    }
+  }, [isMounted, globeSize]);
+
+  useEffect(() => {
+    if (globeEl.current) {
+      globeEl.current.controls().autoRotate = true;
+      globeEl.current.controls().autoRotateSpeed = 0.1;
     }
   }, [isMounted, globeSize]);
 
@@ -77,9 +87,7 @@ export default function PortfolioPage() {
           <h2 className="text-3xl font-bold text-[#ff69b4] mb-6">
             LOCATION VISUALIZATION
           </h2>
-          <p className="text-gray-400 mb-6 text-lg">
-            Recent geolocation visits
-          </p>
+          <p className="text-gray-400 mb-6 text-lg">Recent geolocation visit</p>
           <div
             id="globe-container"
             className="relative flex justify-center items-center"
@@ -92,11 +100,13 @@ export default function PortfolioPage() {
             ) : (
               isMounted && (
                 <Globe
+                  ref={globeEl as MutableRefObject<GlobeMethods | undefined>}
                   pointsData={data}
                   width={globeSize.width}
                   height={globeSize.height}
-                  backgroundColor="#1c1c20"
-                  globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
+                  backgroundColor="rgba(0,0,0,0)"
+                  globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+                  bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
                 />
               )
             )}
