@@ -1,36 +1,16 @@
-export function initAnalytics() {
-  const trackPageView = async () => {
-    const analyticsData = {
-      title: document.title,
-      slug: window.location.pathname + window.location.search,
-      referrer: document.referrer,
-    };
-
-    console.log("Initial analytics data:", analyticsData);
-
-    try {
-      const locationResponse = await fetch("/api/get-location");
-      if (locationResponse.ok) {
-        const locationData = await locationResponse.json();
-        console.log("Location data:", locationData);
-        Object.assign(analyticsData, locationData);
-      } else {
-        console.error(
-          "Failed to fetch location data:",
-          await locationResponse.text()
-        );
-      }
-    } catch (error) {
-      console.error("Error recording analytics data:", error);
+export const sendAnalytics = (slug: string) => {
+  setTimeout(() => {
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("/api/analytics", JSON.stringify({ slug }));
+    } else {
+      fetch("/api/analytics", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ slug }),
+        keepalive: true,
+      }).catch((error) => console.error("Error sending analytics:", error));
     }
-  };
-
-  trackPageView();
-  const originalPushState = history.pushState;
-  history.pushState = function (...args: Parameters<typeof history.pushState>) {
-    originalPushState.apply(this, args);
-    trackPageView();
-  };
-
-  window.addEventListener("popstate", trackPageView);
-}
+  }, 0);
+};

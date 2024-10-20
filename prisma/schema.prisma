@@ -30,3 +30,14 @@ model EmailSubs {
   createdAt DateTime @default(now())
 }
 
+model Analytics {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  slug      String
+  flag      String
+  country   String
+  city      String
+  latitude  Float
+  longitude Float
+}
+
