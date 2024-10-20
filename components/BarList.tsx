@@ -1,5 +1,4 @@
-// Tremor BarList [v0.1.1]
-
+"use client";
 import { cx, focusRing } from "@/lib/utils";
 import React from "react";
 
@@ -74,7 +73,7 @@ function BarListInner<T>(
                 ? [
                     "!-m-0 cursor-pointer",
                     // hover
-                    "hover:bg-gray-50 hover:dark:bg-gray-900",
+                    "hover:bg-gray-50 hover:dark:bg-gray-600",
                   ]
                 : ""
             )}
@@ -85,7 +84,7 @@ function BarListInner<T>(
                 "flex items-center rounded transition-all",
                 rowHeight,
                 // background color
-                "bg-pink-200 dark:bg-pink-900",
+                "bg-pink-200 dark:bg-pink-600",
                 onValueChange
                   ? "group-hover:bg-pink-300 group-hover:dark:bg-pink-800"
                   : "",
@@ -105,7 +104,7 @@ function BarListInner<T>(
                       // base
                       "truncate whitespace-nowrap rounded text-sm",
                       // text color
-                      "text-gray-900 dark:text-gray-50",
+                      "text-gray-600 dark:text-gray-50",
                       // hover
                       "hover:underline hover:underline-offset-2",
                       // focus
@@ -123,7 +122,7 @@ function BarListInner<T>(
                       // base
                       "truncate whitespace-nowrap text-sm",
                       // text color
-                      "text-gray-900 dark:text-gray-50"
+                      "text-gray-600 dark:text-gray-50"
                     )}
                   >
                     {item.name}
@@ -149,7 +148,7 @@ function BarListInner<T>(
                 // base
                 "truncate whitespace-nowrap text-sm leading-none",
                 // text color
-                "text-gray-900 dark:text-gray-50"
+                "text-gray-600 dark:text-gray-50"
               )}
             >
               {valueFormatter(item.value)}
