@@ -1,17 +1,16 @@
-"use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { BarList } from "@/components/BarList";
-import { usePortfolioStore } from "@/store/portfolioStore";
+import { getSlugData, SlugData } from "@/actions/getSlug";
 
-const PortfolioAnalytics: React.FC = () => {
-  const { slugData, loading, error, fetchSlugData } = usePortfolioStore();
+export default async function PortfolioAnalytics() {
+  let slugData: SlugData = [];
+  let error = null;
 
-  useEffect(() => {
-    fetchSlugData();
-  }, [fetchSlugData]);
-
-  if (loading) {
-    return <div>Loading...</div>;
+  try {
+    slugData = await getSlugData();
+  } catch (e) {
+    console.error("Failed to fetch slug data:", e);
+    error = e instanceof Error ? e.message : "An unknown error occurred";
   }
 
   if (error) {
@@ -29,6 +28,4 @@ const PortfolioAnalytics: React.FC = () => {
       <BarList data={slugData} />
     </div>
   );
-};
-
-export default PortfolioAnalytics;
+}

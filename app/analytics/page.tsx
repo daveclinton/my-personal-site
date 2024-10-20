@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { Users, Eye, BookOpen, Briefcase } from "lucide-react";
 import GlobeComponent from "@/components/GlobeUtils/Globe";
