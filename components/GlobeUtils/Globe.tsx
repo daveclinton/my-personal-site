@@ -90,6 +90,7 @@ const GlobeComponent = () => {
             polygonCapColor={() => "#E90074"}
             polygonSideColor={() => "#FEF9F2"}
             polygonAltitude={0.01}
+            atmosphereColor="#E90074"
           />
         </div>
       )}
