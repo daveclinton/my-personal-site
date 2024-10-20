@@ -10,7 +10,7 @@ import {
 
 const metrics = [
   {
-    name: "Total Users",
+    name: "Total Subscribers",
     value: "8,821",
     change: "+12.3%",
     trend: "up",
