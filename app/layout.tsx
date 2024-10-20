@@ -3,6 +3,7 @@ import "./globals.css";
 import { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnalyticsWrapper from "@/components/AnalyticsWrapper";
 const baseUrl = getBaseUrl();
 
 export const metadata: Metadata = {
@@ -52,11 +53,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-[#101012] text-white">
-        <Header />
-        <main className="flex-grow max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {children}
-        </main>
-        <Footer />
+        <AnalyticsWrapper>
+          <Header />
+          <main className="flex-grow max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            {children}
+          </main>
+          <Footer />
+        </AnalyticsWrapper>
       </body>
     </html>
   );
