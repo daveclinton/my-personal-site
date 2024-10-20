@@ -34,8 +34,8 @@ const Header = () => {
                       href={item.href}
                       className={`transition-colors ${
                         pathname === item.href
-                          ? "text-pink-400 font-bold"
-                          : "text-white hover:text-pink-300"
+                          ? "text-pink-600 font-bold"
+                          : "text-white hover:text-pink-700"
                       }`}
                     >
                       {item.label}
@@ -115,8 +115,8 @@ const Header = () => {
                     href={item.href}
                     className={`text-2xl font-bold transition-colors ${
                       pathname === item.href
-                        ? "text-pink-400"
-                        : "text-white hover:text-pink-300"
+                        ? "text-pink-600"
+                        : "text-white hover:text-pink-700"
                     }`}
                     onClick={toggleMenu}
                   >

@@ -6,6 +6,8 @@ import { Loader2 } from "lucide-react";
 
 const Globe = React.lazy(() => import("react-globe.gl"));
 
+import geoJsonData from "@/utils/globe.geojson.json";
+
 const GlobeComponent = () => {
   const [globeSize, setGlobeSize] = useState({ width: 0, height: 0 });
   const [isMounted, setIsMounted] = useState(false);
@@ -22,7 +24,7 @@ const GlobeComponent = () => {
       globeCamera.position.z = 300;
 
       const rotateGlobe = () => {
-        globeScene.rotation.y += 0.005;
+        globeScene.rotation.y += 0.01;
         frame = requestAnimationFrame(rotateGlobe);
       };
 
@@ -81,10 +83,13 @@ const GlobeComponent = () => {
             pointsData={data}
             width={globeSize.width}
             height={globeSize.height}
-            backgroundColor="rgba(0,0,0,0)"
-            globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-            bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+            polygonsData={geoJsonData.features}
+            backgroundColor="#1c1c20"
             onGlobeReady={onGlobeReady}
+            showGraticules={true}
+            polygonCapColor={() => "#E90074"}
+            polygonSideColor={() => "#FEF9F2"}
+            polygonAltitude={0.01}
           />
         </div>
       )}
