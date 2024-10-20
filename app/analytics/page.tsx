@@ -1,11 +1,15 @@
 "use client";
+import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
-import Globe from "react-globe.gl";
+
+const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
 const GlobePage = () => {
   const [globeSize, setGlobeSize] = useState({ width: 500, height: 500 });
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const handleResize = () => {
       const container = document.getElementById("globe-container");
       if (container) {
@@ -14,10 +18,11 @@ const GlobePage = () => {
         setGlobeSize({ width, height });
       }
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isMounted]);
 
   const data = [
     {
@@ -28,7 +33,7 @@ const GlobePage = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="bg-[#1c1c20] rounded-lg p-6">
         <h2 className="text-2xl font-bold text-[#ff69b4] mb-4">
           LOCATION VISUALIZATION
@@ -38,12 +43,14 @@ const GlobePage = () => {
           id="globe-container"
           className="relative flex justify-center items-center"
         >
-          <Globe
-            pointsData={data}
-            width={globeSize.width}
-            height={globeSize.height}
-            backgroundColor="#1c1c20"
-          />
+          {isMounted && (
+            <Globe
+              pointsData={data}
+              width={globeSize.width}
+              height={globeSize.height}
+              backgroundColor="#1c1c20"
+            />
+          )}
         </div>
       </div>
       <div className="bg-[#1c1c20] rounded-lg p-6">
