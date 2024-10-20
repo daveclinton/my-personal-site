@@ -1,5 +1,4 @@
-"use client";
-import { cx, focusRing } from "@/lib/utils";
+import { cx } from "@/lib/utils";
 import React from "react";
 
 type Bar<T> = T & {
@@ -13,8 +12,6 @@ interface BarListProps<T = unknown>
   extends React.HTMLAttributes<HTMLDivElement> {
   data: Bar<T>[];
   valueFormatter?: (value: number) => string;
-  showAnimation?: boolean;
-  onValueChange?: (payload: Bar<T>) => void;
   sortOrder?: "ascending" | "descending" | "none";
 }
 
@@ -22,15 +19,12 @@ function BarListInner<T>(
   {
     data = [],
     valueFormatter = (value) => value.toString(),
-    showAnimation = false,
-    onValueChange,
     sortOrder = "descending",
     className,
     ...props
   }: BarListProps<T>,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
 ) {
-  const Component = onValueChange ? "button" : "div";
   const sortedData = React.useMemo(() => {
     if (sortOrder === "none") {
       return data;
@@ -59,39 +53,18 @@ function BarListInner<T>(
     >
       <div className="relative w-full space-y-1.5">
         {sortedData.map((item, index) => (
-          <Component
+          <div
             key={item.key ?? item.name}
-            onClick={() => {
-              onValueChange?.(item);
-            }}
-            className={cx(
-              // base
-              "group w-full rounded",
-              // focus
-              focusRing,
-              onValueChange
-                ? [
-                    "!-m-0 cursor-pointer",
-                    // hover
-                    "hover:bg-gray-50 hover:dark:bg-gray-600",
-                  ]
-                : ""
-            )}
+            className={cx("group w-full rounded")}
           >
             <div
               className={cx(
-                // base
                 "flex items-center rounded transition-all",
                 rowHeight,
-                // background color
                 "bg-pink-200 dark:bg-pink-600",
-                onValueChange
-                  ? "group-hover:bg-pink-300 group-hover:dark:bg-pink-800"
-                  : "",
-                // margin and duration
+
                 {
                   "mb-0": index === sortedData.length - 1,
-                  "duration-800": showAnimation,
                 }
               )}
               style={{ width: `${widths[index]}%` }}
@@ -103,25 +76,20 @@ function BarListInner<T>(
                     className={cx(
                       // base
                       "truncate whitespace-nowrap rounded text-sm",
-                      // text color
+
                       "text-gray-600 dark:text-gray-50",
-                      // hover
-                      "hover:underline hover:underline-offset-2",
-                      // focus
-                      focusRing
+
+                      "hover:underline hover:underline-offset-2"
                     )}
                     target="_blank"
                     rel="noreferrer"
-                    onClick={(event) => event.stopPropagation()}
                   >
                     {item.name}
                   </a>
                 ) : (
                   <p
                     className={cx(
-                      // base
                       "truncate whitespace-nowrap text-sm",
-                      // text color
                       "text-gray-600 dark:text-gray-50"
                     )}
                   >
@@ -130,7 +98,7 @@ function BarListInner<T>(
                 )}
               </div>
             </div>
-          </Component>
+          </div>
         ))}
       </div>
       <div>

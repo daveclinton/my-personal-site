@@ -44,10 +44,12 @@
     "react-confetti": "^6.1.0",
     "react-dom": "^18",
     "react-globe.gl": "^2.27.2",
+    "react-loading-skeleton": "^3.5.0",
     "resend": "^4.0.0",
     "tailwind-merge": "^2.5.4",
     "three": "^0.169.0",
-    "useWindowSize": "link:react-use/lib/useWindowSize"
+    "useWindowSize": "link:react-use/lib/useWindowSize",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
