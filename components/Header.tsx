@@ -1,9 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "./Link";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import headerNavLinks from "@/data/headerNavLinks";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -15,25 +18,26 @@ const Header = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const menuItems = [
-    { href: "/", label: "Home" },
-    { href: "/client-work", label: "Client Work" },
-    { href: "/projects", label: "Projects" },
-    { href: "/about", label: "About" },
-  ];
   return (
     <React.Fragment>
       <header className="sticky top-0 z-10 bg-[#1F1F22] shadow-md">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-2xl font-bold">
+            <Link href="/" className="text-2xl font-bold text-white">
               大卫
             </Link>
             <nav className="hidden md:block">
               <ul className="flex space-x-6">
-                {menuItems.map((item) => (
+                {headerNavLinks.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="hover:text-gray-300">
+                    <Link
+                      href={item.href}
+                      className={`transition-colors ${
+                        pathname === item.href
+                          ? "text-pink-400 font-bold"
+                          : "text-white hover:text-pink-300"
+                      }`}
+                    >
                       {item.label}
                     </Link>
                   </li>
@@ -41,7 +45,7 @@ const Header = () => {
               </ul>
             </nav>
             <button
-              className="md:hidden"
+              className="md:hidden text-white"
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -97,7 +101,7 @@ const Header = () => {
           </div>
           <nav>
             <ul className="flex flex-col space-y-4 p-4">
-              {menuItems.map((item, index) => (
+              {headerNavLinks.map((item, index) => (
                 <li
                   key={item.href}
                   className={`transform transition-all duration-300 ease-in-out ${
@@ -109,7 +113,11 @@ const Header = () => {
                 >
                   <Link
                     href={item.href}
-                    className="text-2xl font-bold hover:text-gray-300"
+                    className={`text-2xl font-bold transition-colors ${
+                      pathname === item.href
+                        ? "text-pink-400"
+                        : "text-white hover:text-pink-300"
+                    }`}
                     onClick={toggleMenu}
                   >
                     {item.label}
