@@ -21,7 +21,7 @@ const GlobeComponent = () => {
       const globeCamera = globeRef.current.camera();
       let frame: number;
 
-      globeCamera.position.z = 300;
+      globeCamera.position.z = 250;
 
       const rotateGlobe = () => {
         globeScene.rotation.y += 0.01;
