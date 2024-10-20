@@ -1,12 +1,42 @@
 "use client";
+
 import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
+import {
+  Users,
+  Eye,
+  BookOpen,
+  Briefcase,
+  Loader2,
+  CheckCircle2,
+} from "lucide-react";
 
 const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
-const GlobePage = () => {
-  const [globeSize, setGlobeSize] = useState({ width: 500, height: 500 });
+export default function PortfolioPage() {
+  const [globeSize, setGlobeSize] = useState({ width: 0, height: 0 });
   const [isMounted, setIsMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const stats = [
+    { name: "Newsletter Subscribers", count: 1250, icon: Users },
+    { name: "Portfolio Visitors", count: 5678, icon: Eye },
+    { name: "Blogs Written", count: 42, icon: BookOpen },
+    { name: "Projects Completed", count: 37, icon: Briefcase },
+  ];
+
+  const studyPlan = [
+    { id: 1, task: "Learn React Basics", completed: true },
+    { id: 2, task: "Master Next.js", completed: true },
+    { id: 3, task: "Explore GraphQL", completed: false },
+    { id: 4, task: "Build a Full-Stack App", completed: false },
+    { id: 5, task: "Learn Docker", completed: false },
+    { id: 6, task: "Implement CI/CD Pipeline", completed: false },
+    { id: 7, task: "Study Cloud Architecture", completed: false },
+    { id: 8, task: "Master TypeScript", completed: false },
+    { id: 9, task: "Learn Machine Learning Basics", completed: false },
+    { id: 10, task: "Contribute to Open Source", completed: false },
+  ];
 
   useEffect(() => {
     setIsMounted(true);
@@ -14,7 +44,7 @@ const GlobePage = () => {
       const container = document.getElementById("globe-container");
       if (container) {
         const width = container.offsetWidth;
-        const height = Math.min(width, window.innerHeight * 0.6);
+        const height = Math.min(width, window.innerHeight * 0.7);
         setGlobeSize({ width, height });
       }
     };
@@ -22,7 +52,14 @@ const GlobePage = () => {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isMounted]);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted && globeSize.width > 0) {
+      const timer = setTimeout(() => setIsLoading(false), 1000); // Simulate loading time
+      return () => clearTimeout(timer);
+    }
+  }, [isMounted, globeSize]);
 
   const data = [
     {
@@ -32,56 +69,88 @@ const GlobePage = () => {
       color: "#00ff33",
     },
   ];
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="bg-[#1c1c20] rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-[#ff69b4] mb-4">
-          LOCATION VISUALIZATION
-        </h2>
-        <p className="text-gray-400 mb-4">Recent geolocation visits</p>
-        <div
-          id="globe-container"
-          className="relative flex justify-center items-center"
-        >
-          {isMounted && (
-            <Globe
-              pointsData={data}
-              width={globeSize.width}
-              height={globeSize.height}
-              backgroundColor="#1c1c20"
-            />
-          )}
+    <div className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-[#1c1c20] rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-[#ff69b4] mb-6">
+            LOCATION VISUALIZATION
+          </h2>
+          <p className="text-gray-400 mb-6 text-lg">
+            Recent geolocation visits
+          </p>
+          <div
+            id="globe-container"
+            className="relative flex justify-center items-center"
+            style={{ height: `${globeSize.height}px` }}
+          >
+            {isLoading ? (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Loader2 className="h-12 w-12 text-[#ff69b4] animate-spin" />
+              </div>
+            ) : (
+              isMounted && (
+                <Globe
+                  pointsData={data}
+                  width={globeSize.width}
+                  height={globeSize.height}
+                  backgroundColor="#1c1c20"
+                  globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
+                />
+              )
+            )}
+          </div>
+        </div>
+        <div className="bg-[#1c1c20] rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-[#ff69b4] mb-6">
+            PORTFOLIO STATS
+          </h2>
+          <p className="text-gray-400 mb-6 text-lg">
+            Recent achievements and metrics
+          </p>
+          <ul className="space-y-6">
+            {stats.map((stat) => (
+              <li key={stat.name} className="flex justify-between items-center">
+                <div className="flex items-center space-x-4">
+                  <stat.icon className="h-8 w-8 text-[#ff69b4]" />
+                  <span className="text-gray-200 text-xl">{stat.name}</span>
+                </div>
+                <span className="text-[#ff69b4] font-semibold text-2xl">
+                  {stat.count.toLocaleString()}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      <div className="bg-[#1c1c20] rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-[#ff69b4] mb-4">
-          TOTALS BY CITY
+      <div className="bg-[#1c1c20] rounded-lg p-8">
+        <h2 className="text-3xl font-bold text-[#ff69b4] mb-6">
+          YEARLY STUDY PLAN
         </h2>
-        <p className="text-gray-400 mb-4">Recent city visits</p>
-        <ul className="space-y-2">
-          {[
-            { name: "Pattaya", count: 72, flag: "🇹🇭" },
-            { name: "Nairobi", count: 70, flag: "🇰🇪" },
-            { name: "Bangkok", count: 51, flag: "🇹🇭" },
-            { name: "Toronto", count: 37, flag: "🇨🇦" },
-            { name: "Paris", count: 33, flag: "🇫🇷" },
-            { name: "Pune", count: 30, flag: "🇮🇳" },
-            { name: "Bengaluru", count: 29, flag: "🇮🇳" },
-            { name: "Mumbai", count: 25, flag: "🇮🇳" },
-            { name: "Moscow", count: 23, flag: "🇷🇺" },
-            { name: "Delhi", count: 22, flag: "🇮🇳" },
-          ].map((city) => (
-            <li key={city.name} className="flex justify-between items-center">
-              <span>
-                {city.flag} {city.name}
+        <p className="text-gray-400 mb-6 text-lg">
+          Track your learning progress
+        </p>
+        <ul className="space-y-6">
+          {studyPlan.map((item) => (
+            <li key={item.id} className="flex items-center space-x-6">
+              <span className="text-[#ff69b4] font-semibold text-2xl min-w-[2.5rem]">
+                {item.id}.
               </span>
-              <span className="text-[#ff69b4]">x{city.count}</span>
+              <span
+                className={`text-gray-200 flex-grow text-xl ${
+                  item.completed ? "line-through" : ""
+                }`}
+              >
+                {item.task}
+              </span>
+              {item.completed && (
+                <CheckCircle2 className="h-8 w-8 text-green-500" />
+              )}
             </li>
           ))}
         </ul>
       </div>
     </div>
   );
-};
-
-export default GlobePage;
+}
