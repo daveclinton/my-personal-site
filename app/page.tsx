@@ -28,8 +28,8 @@ export default function Home() {
         {clientWork.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
-        <Link href="/projects" className="text-pink-400 hover:underline">
-          View more projects →
+        <Link href="/client-work" className="text-pink-400 hover:underline">
+          View more client works →
         </Link>
       </section>
       <section className="mt-10 flex flex-col gap-3">
