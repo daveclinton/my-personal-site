@@ -2,6 +2,5 @@
 
 import home__aboutMeMdx from './home__about-me.mdx.json' assert { type: 'json' }
 import home__workExperienceMdx from './home__work-experience.mdx.json' assert { type: 'json' }
-import home__nullMdx from './home__null.mdx.json' assert { type: 'json' }
 
-export const allHomes = [home__aboutMeMdx, home__workExperienceMdx, home__nullMdx]
+export const allHomes = [home__aboutMeMdx, home__workExperienceMdx]

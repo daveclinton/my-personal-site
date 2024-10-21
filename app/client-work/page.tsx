@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 const Projects = () => {
   const projects = allClientWorks;
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 lg:w-screen max-w-4xl">
       <h1 className="text-xl font-extrabold leading-9 mb-2 tracking-tight text-gray-900 dark:text-white sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
         {`Projects I have built for clients 🪙`}
       </h1>
