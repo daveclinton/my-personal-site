@@ -11,7 +11,7 @@ export async function POST() {
     //     ? "https://pay.pesapal.com/v3"
     //     : "https://cybqa.pesapal.com/pesapalv3";
 
-    const BASE_URL = "https://cybqa.pesapal.com/pesapalv3";
+    const BASE_URL = "https://pay.pesapal.com/v3";
 
     const authResponse = await axios({
       method: "post",
