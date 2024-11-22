@@ -14,7 +14,7 @@ export default function PayDavidPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<PaymentFormData>({
-    amount: "",
+    amount: 1,
     email: "",
     phone: "",
     description: "",
@@ -41,7 +41,7 @@ export default function PayDavidPage() {
         description: formData.description || "Payment to David",
         reference: `TXN-${Date.now()}`,
         callback_url: `${window.location.origin}/pay-david`,
-        currency: "KES",
+        currency: "USD",
         billing_address: {
           email_address: formData.email,
           phone_number: formData.phone,
