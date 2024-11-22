@@ -57,11 +57,13 @@ export async function POST(request: Request) {
       );
     }
 
-    // Base URL configuration
-    const BASE_URL =
-      process.env.NODE_ENV === "production"
-        ? "https://pay.pesapal.com/v3"
-        : "https://cybqa.pesapal.com/pesapalv3";
+    // // Base URL configuration
+    // const BASE_URL =
+    //   process.env.NODE_ENV === "production"
+    //     ? "https://pay.pesapal.com/v3"
+    //     : "https://cybqa.pesapal.com/pesapalv3";
+
+    const BASE_URL = "https://cybqa.pesapal.com/pesapalv3";
 
     // Get authentication token
     const authResponse = await axios({
