@@ -20,6 +20,16 @@ export default function PayDavidPage() {
     description: "",
   });
 
+  const [isPageLoading, setIsPageLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPageLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -57,19 +67,24 @@ export default function PayDavidPage() {
     (window.location.search.includes("OrderTrackingId") ||
       window.location.search.includes("OrderMerchantReference"));
 
+  if (isPageLoading) {
+    return (
+      <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-pink-500"></div>
+    );
+  }
+
   if (isCallback) {
     return <PaymentCallback />;
   }
 
   return (
-    <div className=" w-full space-y-8 bg-gray-800 p-8 rounded-xl shadow-lg">
+    <div className=" w-full space-y-8 bg-[#1F1F22] p-8 rounded-xl shadow-lg">
       <div className="text-center">
-        <h2 className="mt-6 text-3xl font-extrabold text-pink-300">
-          Support My Work
+        <h2 className="mt-6 text-3xl font-extrabold text-pink-500">
+          Send It Over
         </h2>
-        <p className="mt-2 text-sm text-gray-400">
-          Your contribution helps me continue creating and maintaining
-          open-source projects
+        <p className="mt-2 text-sm text-gray-100">
+          Let’s keep this show running—your cash keeps me afloat.
         </p>
       </div>
 
@@ -77,12 +92,11 @@ export default function PayDavidPage() {
         <div className="rounded-md shadow-sm space-y-4">
           <div>
             <label htmlFor="amount" className="sr-only">
-              Amount (KES)
+              How Much You Gonna Chip In? (KES)
             </label>
             <input
               type="number"
               id="number-input"
-              aria-describedby="helper-text-explanation"
               className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-white bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm transition duration-300"
               placeholder="150 (USD)"
               required
@@ -95,7 +109,7 @@ export default function PayDavidPage() {
 
           <div>
             <label htmlFor="email" className="sr-only">
-              Email address
+              Email—Gotta Keep It Legit
             </label>
             <input
               id="email"
@@ -103,7 +117,7 @@ export default function PayDavidPage() {
               type="email"
               required
               className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-white bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm transition duration-300"
-              placeholder="Email address"
+              placeholder="Your Email (for receipts or whatever)"
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -113,7 +127,7 @@ export default function PayDavidPage() {
 
           <div>
             <label htmlFor="phone" className="sr-only">
-              Phone Number
+              Phone—Just in Case
             </label>
             <input
               id="phone"
@@ -121,7 +135,7 @@ export default function PayDavidPage() {
               type="tel"
               required
               className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-white bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm transition duration-300"
-              placeholder="Phone Number"
+              placeholder="Your Digits"
               value={formData.phone}
               onChange={(e) =>
                 setFormData({ ...formData, phone: e.target.value })
@@ -131,13 +145,13 @@ export default function PayDavidPage() {
 
           <div>
             <label htmlFor="description" className="sr-only">
-              Description (Optional)
+              What’s This For? (Optional)
             </label>
             <textarea
               id="description"
               name="description"
               className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-white bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm transition duration-300"
-              placeholder="Description (Optional)"
+              placeholder="Tell me why you’re sending this cash (or don’t—it’s up to you)"
               value={formData.description}
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
@@ -189,10 +203,10 @@ export default function PayDavidPage() {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
                 </svg>
-                Processing...
+                Hang Tight...
               </span>
             ) : (
-              "Proceed to Payment"
+              "Pay Up"
             )}
           </button>
         </div>
