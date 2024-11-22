@@ -21,13 +21,21 @@ export async function GET() {
       distinct: ["latitude", "longitude", "city", "country"],
     });
 
-    const pointsData = geoData.map((point) => ({
-      lat: point.latitude,
-      lng: point.longitude,
-      size: 0.5,
-      color: generateRandomColor(),
-      label: `${point.city}, ${point.country} ${point.flag}`,
-    }));
+    const pointsData = geoData.map(
+      (point: {
+        latitude: string;
+        longitude: string;
+        city: string;
+        country: string;
+        flag: string;
+      }) => ({
+        lat: point.latitude,
+        lng: point.longitude,
+        size: 0.5,
+        color: generateRandomColor(),
+        label: `${point.city}, ${point.country} ${point.flag}`,
+      })
+    );
 
     return NextResponse.json(pointsData);
   } catch (error) {

@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { sendAnalytics } from "@/utils/analytics-track";
 import React from "react";
 
 export default function AnalyticsWrapper({
@@ -15,7 +14,7 @@ export default function AnalyticsWrapper({
   useEffect(() => {
     const handleRouteChange = () => {
       const url = pathname;
-      sendAnalytics(url);
+      console.log(url);
     };
     handleRouteChange();
 
