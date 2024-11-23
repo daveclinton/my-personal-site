@@ -69,7 +69,7 @@ export default async function HeroSection() {
       </div>
       {visitorCount !== null && (
         <p className="mt-4 text-sm text-gray-400">
-          Visitor count: {visitorCount}
+          Visits count: {visitorCount}
         </p>
       )}
     </section>

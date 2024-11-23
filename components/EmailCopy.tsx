@@ -15,7 +15,7 @@ export function EmailCopy() {
   return (
     <p
       onClick={copyEmail}
-      className="mb-4 flex items-center gap-x-2 cursor-pointer"
+      className="mb-4 animate-pulse flex items-center gap-x-2 cursor-pointer"
     >
       Looking to hire me? Email me : {email}
       {isCopied ? (
