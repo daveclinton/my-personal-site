@@ -5,7 +5,6 @@ import { useState } from "react";
 const SubstackFeed = () => {
   const [isLoading, setIsLoading] = useState(true);
 
-  // Create the configuration script that will run when the page loads
   const configScript = `
     window.SubstackFeedWidget = {
       substackUrl: "daveclintonn.substack.com",
@@ -44,7 +43,6 @@ const SubstackFeed = () => {
         strategy="lazyOnload"
         defer
         onLoad={() => {
-          // Give a small delay to allow the widget to render
           setTimeout(() => setIsLoading(false), 500);
         }}
       />
