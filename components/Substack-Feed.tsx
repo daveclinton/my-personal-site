@@ -1,11 +1,25 @@
 "use client";
+
+import { useEffect } from "react";
 import Script from "next/script";
-import { useState } from "react";
+import React from "react";
+
+declare global {
+  interface Window {
+    SubstackFeedWidget: {
+      substackUrl: string;
+      posts: number;
+      colors: {
+        primary: string;
+        secondary: string;
+        background: string;
+      };
+    };
+  }
+}
 
 const SubstackFeed = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const configScript = `
+  useEffect(() => {
     window.SubstackFeedWidget = {
       substackUrl: "daveclintonn.substack.com",
       posts: 3,
@@ -13,40 +27,21 @@ const SubstackFeed = () => {
         primary: "#EC4899",
         secondary: "#E3DCDF",
         background: "#101012",
-      }
+      },
     };
-  `;
+  }, []);
 
   return (
-    <div className="w-full max-w-4xl mx-auto my-8">
-      {isLoading && (
-        <div className="w-full h-48 bg-gray-900 rounded-lg animate-pulse flex items-center justify-center">
-          <div className="space-y-4">
-            <div className="h-4 w-48 bg-gray-800 rounded animate-pulse"></div>
-            <div className="h-4 w-40 bg-gray-800 rounded animate-pulse"></div>
-            <div className="h-4 w-44 bg-gray-800 rounded animate-pulse"></div>
-          </div>
-        </div>
-      )}
-
-      <div
-        id="substack-feed-embed"
-        className={isLoading ? "hidden" : "block"}
-      />
-
-      <Script id="substack-feed-config" strategy="lazyOnload">
-        {configScript}
-      </Script>
-
+    <React.Fragment>
+      <section className="mt-10 flex flex-col gap-3">
+        <h2 className="mb-2 text-lg font-semibold">Recent Substacks</h2>
+      </section>
+      <div id="substack-feed-embed" className="w-full max-w-4xl mx-auto my-8" />
       <Script
         src="https://substackapi.com/embeds/feed.js"
         strategy="lazyOnload"
-        defer
-        onLoad={() => {
-          setTimeout(() => setIsLoading(false), 500);
-        }}
       />
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -27,9 +27,6 @@ export default function Home() {
           <Content />
         </ReadMore>
       </div>
-      <section className="mt-10 flex flex-col gap-3">
-        <h2 className="mb-2 text-lg font-semibold">Recent Substacks</h2>
-      </section>
       <SubstackFeed />
       <section className="mt-10 flex flex-col gap-3">
         <h2 className="mb-2 text-lg font-semibold">Some Client Works</h2>
