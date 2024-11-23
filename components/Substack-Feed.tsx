@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import Script from "next/script";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 declare global {
   interface Window {
@@ -15,11 +15,14 @@ declare global {
         background: string;
       };
     };
+    renderSubstackFeedWidget?: () => void;
   }
 }
 
 const SubstackFeed = () => {
-  useEffect(() => {
+  const pathname = usePathname();
+
+  const initializeSubstackWidget = () => {
     window.SubstackFeedWidget = {
       substackUrl: "daveclintonn.substack.com",
       posts: 3,
@@ -29,7 +32,23 @@ const SubstackFeed = () => {
         background: "#101012",
       },
     };
-  }, []);
+
+    if (window.renderSubstackFeedWidget) {
+      window.renderSubstackFeedWidget();
+    } else {
+      const script = document.createElement("script");
+      script.src = "https://substackapi.com/embeds/feed.js";
+      script.async = true;
+      script.onload = () => {
+        window.renderSubstackFeedWidget?.();
+      };
+      document.body.appendChild(script);
+    }
+  };
+
+  useEffect(() => {
+    initializeSubstackWidget();
+  }, [pathname]);
 
   return (
     <React.Fragment>
@@ -37,10 +56,6 @@ const SubstackFeed = () => {
         <h2 className="mb-2 text-lg font-semibold">Recent Substacks</h2>
       </section>
       <div id="substack-feed-embed" className="w-full max-w-4xl mx-auto my-8" />
-      <Script
-        src="https://substackapi.com/embeds/feed.js"
-        strategy="lazyOnload"
-      />
     </React.Fragment>
   );
 };
