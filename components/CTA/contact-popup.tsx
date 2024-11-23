@@ -203,19 +203,19 @@ export function ContactPopup() {
         <div className="relative group">
           <div className="absolute -inset-4">
             <div className="w-full h-full rotate-180 blur-xl opacity-30 group-hover:opacity-70 transition-opacity duration-500">
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-pink-400 rounded-full animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-800 to-pink-600 rounded-full animate-pulse"></div>
             </div>
           </div>
 
           <button
             onClick={() => setIsOpen(true)}
-            className="relative bg-gradient-to-r from-pink-500 to-pink-400 text-white rounded-full px-6 py-3 flex items-center gap-2 shadow-lg hover:shadow-pink-400/50 transition-all duration-300 hover:scale-105 group/button"
+            className="relative bg-gradient-to-r from-pink-800 to-pink-600 text-white rounded-full px-6 py-3 flex items-center gap-2 shadow-lg hover:shadow-pink-400/50 transition-all duration-300 hover:scale-105 group/button"
             aria-label="Open contact form"
           >
-            <MessageCircle className="h-5 w-5 group-hover/button:animate-bounce" />
+            <MessageCircle className="h-5 w-5 animate-bounce" />
             <span className="font-medium">Contact Me</span>
 
-            <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-pink-300 to-pink-500 rounded-full blur opacity-40 group-hover/button:opacity-75 animate-gradient-x"></div>
+            <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-800 via-pink-600 to-pink-800 rounded-full blur opacity-40 group-hover/button:opacity-75 animate-gradient-x"></div>
           </button>
         </div>
       )}
