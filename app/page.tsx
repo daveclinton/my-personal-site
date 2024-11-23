@@ -9,6 +9,7 @@ import {
 } from "@/.contentlayer/generated";
 import { ProjectCard } from "@/components/ProjectCard";
 import SubstackFeed from "@/components/Substack-Feed";
+import { ReadMore } from "@/components/ReadMore";
 
 export default function Home() {
   const home = allHomes;
@@ -22,7 +23,9 @@ export default function Home() {
     <React.Fragment>
       <HeroSection />
       <div className="prose dark:prose-invert my-5 max-w-4xl">
-        <Content />
+        <ReadMore>
+          <Content />
+        </ReadMore>
       </div>
       <section className="mt-10 flex flex-col gap-3">
         <h2 className="mb-2 text-lg font-semibold">Recent Substacks</h2>
