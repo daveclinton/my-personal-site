@@ -97,7 +97,7 @@ export function ContactPopup() {
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className="fixed bottom-8 right-4 z-50">
       {isOpen ? (
         <div className="w-80 bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-pink-500">
           <div className="bg-gray-800 text-white px-4 py-3 flex justify-between items-center">

@@ -40,3 +40,16 @@ body {
   animation: gradient-x 3s linear infinite;
   background-size: 200% 200%;
 }
+
+.use-theme-bg,
+.custom-iframe {
+  background-color: #1f1f22 !important;
+  color: #ffffff !important;
+}
+
+/* Add specific styles for the iframe container */
+.iframe-container {
+  background-color: #1f1f22;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
