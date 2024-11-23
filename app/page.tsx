@@ -8,6 +8,7 @@ import {
   allProjects,
 } from "@/.contentlayer/generated";
 import { ProjectCard } from "@/components/ProjectCard";
+import SubstackFeed from "@/components/Substack-Feed";
 
 export default function Home() {
   const home = allHomes;
@@ -23,6 +24,10 @@ export default function Home() {
       <div className="prose dark:prose-invert my-5 max-w-4xl">
         <Content />
       </div>
+      <section className="mt-10 flex flex-col gap-3">
+        <h2 className="mb-2 text-lg font-semibold">Recent Substacks</h2>
+      </section>
+      <SubstackFeed />
       <section className="mt-10 flex flex-col gap-3">
         <h2 className="mb-2 text-lg font-semibold">Some Client Works</h2>
         {clientWork.map((project, index) => (
