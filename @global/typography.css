@@ -1,0 +1,66 @@
+body {
+  font-family: "JetBrains Mono", "IBM Plex Mono", "Fira Code", monospace;
+  color: #ffffff;
+}
+
+a {
+  color: #4ecdc4;
+
+  &[aria-current] {
+    text-decoration: 2px underline #45b7af;
+    text-underline-offset: 1px;
+  }
+
+  &:hover {
+    color: #45b7af;
+  }
+}
+
+h1 {
+  font-family: "Fira Code", "Roboto Mono", monospace;
+  letter-spacing: -0.03em;
+  font-size: 2rem;
+  color: #ffffff;
+
+  + p {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.15em;
+    font-weight: 300;
+    color: rgb(249, 247, 247);
+    margin-bottom: 2em;
+    text-wrap: balance;
+  }
+}
+
+/* links */
+a {
+  nav & {
+    font-family: "Fira Code", "Roboto Mono", monospace;
+    font-weight: 500;
+    color: #4ecdc4;
+
+    &[aria-current] {
+      text-decoration: 2px underline #45b7af;
+      text-underline-offset: 8px;
+    }
+
+    &:hover {
+      color: #45b7af;
+    }
+  }
+}
+h2 {
+  color: #ffffff;
+}
+
+p,
+li {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #ffffff;
+  line-height: 1.65;
+
+  strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+}

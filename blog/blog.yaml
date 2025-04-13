@@ -1,0 +1,4 @@
+
+
+include: [ content, cards, motion ]
+title_template: "%s"

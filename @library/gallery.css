@@ -1,0 +1,46 @@
+/*
+  Reusable gallery component. Used on front page
+*/
+
+.gallery {
+  list-style: none;
+  padding: 0;
+  a {
+    text-decoration: none;
+  }
+
+  figure {
+    transition: transform 0.1s;
+    align-items: flex-start;
+    display: flex;
+    gap: 3rem;
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    @media (width < 900) {
+      img {
+        display: none;
+      }
+    }
+  }
+
+  time {
+    color: var(--marker);
+    font-weight: 300;
+    font-size: 85%;
+  }
+
+  h2 {
+    color: var(--gray-100);
+    text-wrap: balance;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  img {
+    display: none;
+  }
+}
