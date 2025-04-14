@@ -23,4 +23,3 @@ These days, I’ve taken the consulting route and worked with a handful of inter
 I like working at the intersection of clean code, good design, and strong documentation. Whether it’s front-end, full-stack, or a weird edge case no one wants to touch, I’m in.
 
 If you're building something meaningful and need someone who can code *and* explain things clearly, let’s talk — [My Email](mailto:clintondavid46@gmail.com).
-
