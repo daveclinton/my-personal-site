@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 <title>David Clinton</title>
 <meta name="generator" content="Nue v1.0.0-RC.2 (nuejs.org)">
-<meta name="date.updated" content="2025-04-15T05:51:19.507Z">
+<meta name="date.updated" content="2025-04-15T13:24:45.000Z">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Welcome to my blog &#x1f44b;">
 <meta name="author" content="David Clinton">
@@ -110,11 +110,11 @@ body {
       position: relative;
 
       & h1 {
-        color: #fff;
+        color: var(--gray-100);
         letter-spacing: -.02em;
         text-transform: none;
         text-shadow: none;
-        font-weight: 500;
+        font-weight: 600;
         line-height: 1.1;
       }
 
@@ -263,15 +263,15 @@ p, li {
 </style>
 <style href="/@library/gallery.css">.gallery {
   padding: 0;
-  list-style: none;
+  list-style-type: circle;
 
   & a {
+    color: var(--gray-100);
     text-decoration: none;
   }
 
   & figure {
     align-items: flex-start;
-    gap: 3rem;
     transition: transform .1s;
     display: flex;
 
@@ -286,14 +286,8 @@ p, li {
     }
   }
 
-  & time {
-    color: var(--marker);
-    font-size: 85%;
-    font-weight: 300;
-  }
-
   & h2 {
-    color: var(--gray-100);
+    color: var(--main-600);
     text-wrap: balance;
     margin: 0;
     font-size: 1rem;
@@ -301,7 +295,13 @@ p, li {
     line-height: 1.5;
   }
 
-  & img {
+  & img, & p {
+    display: none;
+  }
+
+  & time {
+    font-size: 85%;
+    font-weight: 300;
     display: none;
   }
 }
@@ -360,11 +360,12 @@ article {
     <article>
       
       <section><p>Welcome to my blog &#x1f44b;</p>
-<p>I&#x2019;m David Clinton, best known for speaking to a wall on <a href="https://x.com/daveclintonn">Twitter</a>. I&#x2019;m based in Nairobi Kenya, and I enjoy writing about my experiences.</p>
+<p>I&#x2019;m David Clinton, best known for speaking to a wall on <a href="https://x.com/daveclintonn">Twitter</a>.  I enjoy building things that are clear, fast, and actually useful. One of the things I also care about is making tech easy to understand, scalable, and feel a little more human.</p>
 <p>As alluded to above, I&apos;m very active on Twitter. Message me there to get in touch.</p></section>
 
-<section><h4>Featured</h4>
-<ul class="gallery"><li class="is-new"><a href="/blog/why-nue.html"><figure><img src="/blog/img/blog.jpg" loading="lazy"><figcaption><time datetime="2025-04-15T00:00:00.000Z">April 15, 2025</time><h2>Why I chose Nue.js for portfolio projects</h2></figcaption></figure></a></li></ul></section>
+<section><h4>Featured Posts</h4>
+<ul class="gallery"><li class="is-new"><time datetime="2025-04-15T00:00:00.000Z">April 15, 2025</time><a href="/blog/basic-websites.html"><h2>Most frameworks can be overkill for basic websites</h2><p>A couple of weeks ago, I <a href="https://x.com/tipiirai/status/1906935615871942873">saw a tweet</a> saying: <q>Apps lighter than a single React button.</q> And it sounded interesting! I was curious to see what moment the article linked to it would give me. React is popular, it has been massively adopted, it got me into a serious company. But:</p></a></li>
+<li class="is-new"><time datetime="2025-04-15T00:00:00.000Z">April 15, 2025</time><a href="/blog/doing-hard-things.html"><h2>DRAFT - Doing Hard Things Is Where the Bread Is</h2><p>I have a problem with easy things. Doing hard things in any job is rarely comfortable, but that&#x2019;s where the bread is. That&#x2019;s what compounds your growth. For example:</p></a></li></ul></section>
       
     </article>
 

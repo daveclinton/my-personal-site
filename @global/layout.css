@@ -82,9 +82,9 @@ body {
       margin: 0;
       position: relative;
       h1 {
-        color: #ffffff;
+        color: var(--gray-100);
         line-height: 1.1;
-        font-weight: 500;
+        font-weight: 600;
         letter-spacing: -0.02em;
         text-transform: none;
         text-shadow: none;

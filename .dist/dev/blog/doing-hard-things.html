@@ -4,17 +4,18 @@
 
   <head>
     <meta charset="utf-8">
-<title>About Me</title>
+<title>DRAFT - Doing Hard Things Is Where the Bread Is</title>
 <meta name="generator" content="Nue v1.0.0-RC.2 (nuejs.org)">
-<meta name="date.updated" content="2025-04-15T13:13:11.062Z">
+<meta name="date.updated" content="2025-04-15T13:24:46.842Z">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Well, I&apos;m David Clinton. I enjoy building things that are clear, fast, and actually useful. One of the things I also care about is making tech easy to understand, scalable, and feel a little more human.">
+<meta name="description" content="I have a problem with easy things. Doing hard things in any job is rarely comfortable, but that&#x2019;s where the bread is. That&#x2019;s what compounds your growth. For example:">
 <meta name="author" content="David Clinton">
-<meta property="og:title" content="About Me">
-<meta property="og:description" content="Well, I&apos;m David Clinton. I enjoy building things that are clear, fast, and actually useful. One of the things I also care about is making tech easy to understand, scalable, and feel a little more human.">
+<meta property="og:title" content="DRAFT - Doing Hard Things Is Where the Bread Is">
+<meta property="og:description" content="I have a problem with easy things. Doing hard things in any job is rarely comfortable, but that&#x2019;s where the bread is. That&#x2019;s what compounds your growth. For example:">
 <meta property="og:image" content="https://daveclintonn.cc/img/og_clinton.png">
-<meta property="article:published_time" content="Tue Aug 13 2024 03:00:00 GMT+0300 (East Africa Time)">
+<meta property="article:published_time" content="Tue Apr 15 2025 03:00:00 GMT+0300 (East Africa Time)">
 <meta name="nue:components" content=" ">
+<meta name="nue:include" content="content cards motion">
 <meta name="nue:globals" content="@global">
 <meta name="nue:libs" content="@library">
 <link rel="icon" type="image/png" href="/img/favicon.png">
@@ -110,11 +111,11 @@ body {
       position: relative;
 
       & h1 {
-        color: #fff;
+        color: var(--gray-100);
         letter-spacing: -.02em;
         text-transform: none;
         text-shadow: none;
-        font-weight: 500;
+        font-weight: 600;
         line-height: 1.1;
       }
 
@@ -261,6 +262,122 @@ p, li {
   }
 }
 </style>
+<style href="/@library/cards.css">:root {
+  --pink-gradient: linear-gradient(#e879f9, #ec4899);
+  --blue-gradient: linear-gradient(#0ea5e9, #67e8f9);
+}
+
+.pink, .blue {
+  border-radius: .8em;
+  margin: 1.5em 0 2em;
+  overflow: hidden;
+
+  & pre {
+    margin: 0;
+    padding: 2em;
+  }
+
+  & > * {
+    border-radius: .6em 0 0;
+  }
+}
+
+.blue {
+  background-image: var(--blue-gradient);
+}
+</style>
+<style href="/@library/content.css">article a {
+  text-decoration: underline var(--main-500) 1px;
+  text-underline-offset: 3px;
+  color: var(--gray-100);
+  font-weight: 500;
+
+  &:hover {
+    text-decoration-color: var(--main-100);
+    color: var(--marker);
+    text-decoration-thickness: 2px;
+  }
+}
+
+h2 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+li {
+  text-wrap: balance;
+  margin-bottom: 1em;
+}
+
+pre {
+  --glow-padding: 2em;
+  font-size: 105%;
+}
+
+img, pre {
+  border-radius: 8px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+blockquote {
+  border-left: 2px solid var(--gray-100);
+  text-wrap: balance;
+  margin: .5em 0;
+  padding-left: .5em;
+
+  & p {
+    font-size: 90%;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  & strong {
+    background-color: var(--marker);
+    font-weight: inherit;
+    margin-inline: -.2em;
+    padding: .1em .2em;
+  }
+}
+</style>
+<style href="/@library/motion.css">header, h1, h1 + p, h1 + p + * {
+  filter: none;
+  opacity: 1;
+  transition: opacity .5s, filter .7s;
+
+  @starting-style {
+    & {
+      filter: blur(10px);
+      opacity: 0;
+    }
+  }
+}
+
+h1 {
+  transition-delay: .1s;
+}
+
+h1 + p {
+  transition-delay: .2s;
+}
+
+h1 + p + * {
+  transition-delay: .4s;
+}
+
+article {
+  view-transition-name: article;
+}
+
+::view-transition-old(article) {
+  transition: all .8s;
+  transform: scale(1.2)translateY(2em);
+}
+</style>
 <script src="/@nue/hotreload.js" type="module"></script>
 <script src="/@nue/view-transitions.js" type="module"></script>
     
@@ -279,17 +396,19 @@ p, li {
     
 
     <article>
-      
-      <section><h1>About Me</h1>
-<p>Well, I&apos;m David Clinton. I enjoy building things that are clear, fast, and actually useful. One of the things I also care about is making tech easy to understand, scalable, and feel a little more human.</p>
-<p>My first role in tech was at <a href="https://blog.paperspace.com/author/david-clinton/">Paperspace</a> <strong>now acquired by Digital Ocean</strong>, where I spent a year building machine learning projects and sometimes wrote technical documentation that made it less of a punishment for tech savvy people to read.</p>
-<p>After that, I joined <a href="https://untapped-global.com/">Untapped Global</a> as a Frontend Engineer. I spent three years helping build an investment platform used by high net worth individuals. Think money meets dashboards meets a lot of late nights.</p>
-<p>These days, I&#x2019;ve taken the consulting route and worked with a handful of interesting teams:</p>
-<ul><li><p><a href="https://www.snaplist.app/">Snaplist</a>: Built a third-party mobile marketplace app for sellers on platforms like eBay and Facebook Marketplace.</p></li>
-<li><p><a href="https://www.milnerfresh.com/">Milner Fresh</a>: Helped launch an online marketplace for exporting fresh produce globally.</p></li>
-<li><p><a href="https://givesuite.com/">GiveSuite</a>: Developed fundraising funnels and donation forms for nonprofits &#x2014; making it easier for organizations to raise money and tell their stories.</p></li></ul>
-<p>I like working at the intersection of clean code, good design, and strong documentation. Whether it&#x2019;s front-end, full-stack, or a weird edge case no one wants to touch, I&#x2019;m in.</p>
-<p>If you&apos;re building something meaningful and need someone who can code <em>and</em> explain things clearly, let&#x2019;s talk &#x2014; <a href="mailto:clintondavid46@gmail.com">My Email</a>.</p></section>
+      <header>
+  <h1>DRAFT - Doing Hard Things Is Where the Bread Is</h1>
+  <p>
+    <time datetime="2025-04-15T00:00:00.000Z">April 15, 2025</time>
+  </p>
+</header>
+      <section><p>I have a problem with easy things. Doing hard things in any job is rarely comfortable, but that&#x2019;s where the bread is. That&#x2019;s what compounds your growth. For example:</p>
+<blockquote><p>Eating junk food is unhealthy, but it&#x2019;s easy.</p>
+<p>Vibe coding is fun, but it doesn&#x2019;t improve your problem-solving skills.</p></blockquote>
+
+<p>The gate to doing hard things is wide open, but most people ignore it.</p>
+<p>In one of <a href="https://world.hey.com/dhh/why-don-t-more-people-use-linux-33b75f53">DHH&apos;s posts</a>, he said: <strong><q>It&#x2019;s easier to be fat and ignorant in a world of cheap, empty calories than it is to be fit and informed.</q></strong></p>
+<p>Software engineering is getting easier every day with better tools, tighter abstractions, faster ecosystems. So where&apos;s the leftover bread?...</p></section>
       
     </article>
 

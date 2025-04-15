@@ -3,17 +3,17 @@
 */
 
 .gallery {
-  list-style: none;
+  list-style-type: circle;
   padding: 0;
   a {
     text-decoration: none;
+    color: var(--gray-100);
   }
 
   figure {
     transition: transform 0.1s;
     align-items: flex-start;
     display: flex;
-    gap: 3rem;
     &:hover {
       transform: scale(1.01);
     }
@@ -25,14 +25,8 @@
     }
   }
 
-  time {
-    color: var(--marker);
-    font-weight: 300;
-    font-size: 85%;
-  }
-
   h2 {
-    color: var(--gray-100);
+    color: var(--main-600);
     text-wrap: balance;
     font-size: 1rem;
     font-weight: 500;
@@ -42,5 +36,13 @@
 
   img {
     display: none;
+  }
+  p {
+    display: none;
+  }
+  time {
+    display: none;
+    font-weight: 300;
+    font-size: 85%;
   }
 }

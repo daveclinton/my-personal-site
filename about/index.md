@@ -12,7 +12,7 @@ Well, I'm David Clinton. I enjoy building things that are clear, fast, and actua
 
 My first role in tech was at [Paperspace](https://blog.paperspace.com/author/david-clinton/) **now acquired by Digital Ocean**, where I spent a year building machine learning projects and sometimes wrote technical documentation that made it less of a punishment for tech savvy people to read.
 
-After that, I joined [Untapped Global](https://untapped-global.com/) as a React Engineer. I spent three years helping build an investment platform used by high net worth individuals. Think money meets dashboards meets a lot of late nights.
+After that, I joined [Untapped Global](https://untapped-global.com/) as a Frontend Engineer. I spent three years helping build an investment platform used by high net worth individuals. Think money meets dashboards meets a lot of late nights.
 
 These days, I’ve taken the consulting route and worked with a handful of interesting teams:
 

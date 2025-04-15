@@ -78,11 +78,11 @@ body {
       position: relative;
 
       & h1 {
-        color: #fff;
+        color: var(--gray-100);
         letter-spacing: -.02em;
         text-transform: none;
         text-shadow: none;
-        font-weight: 500;
+        font-weight: 600;
         line-height: 1.1;
       }
 
