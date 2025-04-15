@@ -20,7 +20,7 @@ I have genuinely lost count of the number of websites I have built since my firs
 
 When I came across [Nue](https://nuejs.org/), I got **sold**. It is not just minimal effort, but everything has been taken back to the basics. Putting it simpley, it is easy to build using Nue than it is to use React. And Nue isn't just simple. It brings the good old web development **fun** back to the forefront.
 
-I tried out Nue by builidng a [portfolio website](https://ngomathebrand.cc/) for a fried who wanted something that looked like the offical Nike Site. I finished it in a day. A week later, I thought, why not rebuild my blog with Nue too? So I switched from Next.js and found that it is a ridiculously easier alternative.
+I tried out Nue by builidng a [portfolio website](https://ngomathebrand.cc/) for a friend who wanted something that looked like the official Nike Site. I finished it in a day. A week later, I thought, why not rebuild my blog with Nue too? So I switched from Next.js and found that it is a ridiculously easier alternative.
 
 The Nue framework is geared towards semantic HTML and less Javascript. Put it simply as standard HTML, and functionalities can be extended with custom HTML-based components.
 
