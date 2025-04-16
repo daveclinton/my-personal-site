@@ -18,6 +18,7 @@ No order. No logic. Just pure vibes.
 
 - [Learn to Write better CSS](https://every-layout.dev/)
 - [Apple needs a new asshole in charge](https://world.hey.com/dhh/apple-needs-a-new-asshole-in-charge-0bf46b94)
+- [You're Probably Breaking the Llama Community License](https://notes.victor.earth/youre-probably-breaking-the-llama-community-license/)
 
 ---
 

@@ -27,7 +27,6 @@
 
   h2 {
     color: var(--main-600);
-    text-wrap: balance;
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
