@@ -1,5 +1,5 @@
 ---
-title: DRAFT - Doing Hard Things Is Where the Bread Is  
+title: Doing Hard Things Is Where the Bread Is  
 og: img/blog.jpg  
 date: 2025-04-15  
 ---
