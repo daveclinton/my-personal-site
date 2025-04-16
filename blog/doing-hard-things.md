@@ -1,7 +1,7 @@
 ---
 title: Doing Hard Things Is Where the Bread Is  
 og: img/blog.jpg  
-date: 2025-04-15  
+date: 2025-04-16  
 ---
 
 I have a problem with easy things. Doing hard things in any job is rarely comfortable, but that’s where the bread is. That’s what compounds your growth. For example:
