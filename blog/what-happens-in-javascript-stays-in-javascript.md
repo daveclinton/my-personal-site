@@ -11,7 +11,7 @@ In 2023 and 2024, I have been jumping between languages (Javascript, Typescript,
 I realized I was doing what I advice many devs not to do:
 > Confusing activity for progress
 
-## Switching My Focus Now(April, 17th)
+### Switching My Focus Now(April, 17th)
 
 I have decided to go into the badlands, **deep inside**, that means android for me.
 
@@ -19,7 +19,7 @@ I have decided to go into the badlands, **deep inside**, that means android for 
 - Real UI, real users, real problem
 - Document my progress
 
-## My Weekly Structure
+### My Weekly Structure
 
 **Monday to Sartuday- 2hrs/day**
 > Android development. Building real stuff. Learning Jetpack, architecture patterns, API integration, etc.
@@ -31,7 +31,7 @@ I have decided to go into the badlands, **deep inside**, that means android for 
 > What did I learn this week? What went wrong? What’s next?
 
 
-## Will this work out?
+### Will this work out?
 I am here to find out.
 This time, I'm not trying to do everything. I am doing one thing, deeply.
 
