@@ -20,6 +20,8 @@ No order. No logic. Just pure vibes.
 - [Apple needs a new asshole in charge](https://world.hey.com/dhh/apple-needs-a-new-asshole-in-charge-0bf46b94)
 - [You're Probably Breaking the Llama Community License](https://notes.victor.earth/youre-probably-breaking-the-llama-community-license/)
 - [Learn CPP](https://www.learncpp.com/)
+- [Common Ninja Blog](https://www.commoninja.com/)
+- [Node.js Master](https://khalilstemmler.com/)
 
 ---
 

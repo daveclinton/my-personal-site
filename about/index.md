@@ -16,7 +16,7 @@ After that, I joined [Untapped Global](https://untapped-global.com/) as a Fronte
 
 These days, I’ve taken the consulting route and worked with a handful of interesting teams:
 
-- [Snaplist](https://www.snaplist.app/): Built a third-party mobile marketplace app for sellers on platforms like eBay and Facebook Marketplace.
+- [Snaplist, (In Development)](https://www.snaplist.app/): Built a third-party mobile marketplace app for sellers on platforms like eBay and Facebook Marketplace.
 - [Milner Fresh](https://www.milnerfresh.com/): Helped launch an online marketplace for exporting fresh produce globally.
 - [GiveSuite](https://givesuite.com/): Developed fundraising funnels and donation forms for nonprofits — making it easier for organizations to raise money and tell their stories.
 

@@ -1,0 +1,16 @@
+
+    fetch("https://visitors-tracker.clintondavid46.workers.dev/")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("visitor-count").textContent = data.count;
+      })
+      .catch(() => {
+        document.getElementById("visitor-count").textContent = "Error";
+      });
+
+export const lib = [
+{
+  tagName: 'p',
+  tmpl: '<p>Visitor count: <span id="visitor-count">Loading...</span></p>',
+}]
+export default lib[0]
